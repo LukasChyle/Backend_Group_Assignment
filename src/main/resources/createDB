@@ -1,0 +1,3 @@
+CREATE DATABASE backend_db;
+CREATE USER 'backend2023'@'localhost' IDENTIFIED BY 'backendPassword';
+GRANT ALL ON . TO 'backend2023'@'localhost';
