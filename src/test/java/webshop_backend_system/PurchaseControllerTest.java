@@ -1,7 +1,7 @@
-package com.example.backend_group_assignment;
+package webshop_backend_system;
 
-import com.example.backend_group_assignment.controller.PurchaseController;
-import com.example.backend_group_assignment.model.Purchase;
+import webshop_backend_system.controller.PurchaseController;
+import webshop_backend_system.model.Purchase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,10 +9,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import javax.xml.transform.Result;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

@@ -1,4 +1,4 @@
-package com.example.backend_group_assignment.model;
+package webshop_backend_system.model;
 
 import jakarta.persistence.*;
 import lombok.*;
