@@ -9,16 +9,4 @@ public class BackendGroupAssignmentApplication {
         SpringApplication.run(BackendGroupAssignmentApplication.class, args);
     }
 
-//    @Bean
-//    CommandLineRunner initData(PurchaseRepo purchaseRepo) {
-//        return (args) -> {
-//            Purchase p1 = new Purchase("Gulaggatan", "11822", "Stockholm Sweden");
-//            Purchase p2 = new Purchase("Karlbergsvägen", "11327", "Stockholm Sweden");
-//            Purchase p3 = new Purchase("Kungsgatan", "11143", "Stockholm Sweden");
-//
-//            purchaseRepo.save(p1);
-//            purchaseRepo.save(p2);
-//            purchaseRepo.save(p3);
-//        };
-//    }
 }
