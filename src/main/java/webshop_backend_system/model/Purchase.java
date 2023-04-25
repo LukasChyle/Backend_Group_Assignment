@@ -7,6 +7,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,6 +21,7 @@ public class Purchase {
     private String address;
     private String zipCode;
     private String locality;
+//    private Customer customer;
 
     @Column(nullable = false, updatable = false)
     @CreationTimestamp
@@ -27,23 +29,23 @@ public class Purchase {
     @UpdateTimestamp
     private @Setter(AccessLevel.NONE) Instant dateUpdated;
 
-    public Purchase(String address, String zipCode, String locality) {
-        this.address = address;
-        this.zipCode = zipCode;
-        this.locality = locality;
-    }
+    @OneToMany(mappedBy = "purchase")
+    private List<PurchaseProduct> purchaseProducts;
 
-
-
-    //    @ManyToOne
+//    @ManyToOne(optional = false)
 //    @JoinColumn
 //    @JsonIgnore
 //    private Customer customer;
-//
+
 //    @OneToMany(mappedBy = "purchase")
-//    @JoinTable
 //    private List<PurchaseProduct> purchaseProducts;
 
+    public Purchase(String address, String zipCode, String locality/*, Customer customer*/) {
+        this.address = address;
+        this.zipCode = zipCode;
+        this.locality = locality;
+//        this.customer = customer;
+    }
 }
 
 //5.15

@@ -7,7 +7,7 @@ import webshop_backend_system.repository.PurchaseRepo;
 import java.util.List;
 
 @RestController
-@RequestMapping("/purchase")
+@RequestMapping("/purchases")
 public class PurchaseController {
 
     private final PurchaseRepo purchaseRepo;
@@ -16,7 +16,7 @@ public class PurchaseController {
         this.purchaseRepo = purchaseRepo;
     }
 
-    @RequestMapping("/")
+    @RequestMapping
     public List<Purchase> getAllPurchases() {
         return purchaseRepo.findAll();
     }
