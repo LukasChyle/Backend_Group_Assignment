@@ -1,7 +1,7 @@
-package project.repository;
+package com.example.backend_group_assignment.repository;
 
+import com.example.backend_group_assignment.model.Purchase;
 import org.springframework.data.jpa.repository.JpaRepository;
-import project.model.Purchase;
 
 public interface PurchaseRepo extends JpaRepository<Purchase,Long> {
 }

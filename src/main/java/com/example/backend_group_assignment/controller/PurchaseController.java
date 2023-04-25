@@ -1,8 +1,8 @@
-package project.controller;
+package com.example.backend_group_assignment.controller;
 
 import org.springframework.web.bind.annotation.*;
-import project.model.Purchase;
-import project.repository.PurchaseRepo;
+import com.example.backend_group_assignment.model.Purchase;
+import com.example.backend_group_assignment.repository.PurchaseRepo;
 
 import java.util.List;
 

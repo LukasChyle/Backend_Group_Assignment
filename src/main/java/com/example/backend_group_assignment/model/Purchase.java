@@ -1,4 +1,4 @@
-package project.model;
+package com.example.backend_group_assignment.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -27,7 +27,15 @@ public class Purchase {
     @UpdateTimestamp
     private @Setter(AccessLevel.NONE) Instant dateUpdated;
 
-//    @ManyToOne
+    public Purchase(String address, String zipCode, String locality) {
+        this.address = address;
+        this.zipCode = zipCode;
+        this.locality = locality;
+    }
+
+
+
+    //    @ManyToOne
 //    @JoinColumn
 //    @JsonIgnore
 //    private Customer customer;
