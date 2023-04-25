@@ -21,7 +21,6 @@ public class Purchase {
     private String address;
     private String zipCode;
     private String locality;
-//    private Customer customer;
 
     @Column(nullable = false, updatable = false)
     @CreationTimestamp
