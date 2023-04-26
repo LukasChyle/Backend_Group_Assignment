@@ -20,7 +20,7 @@ public class CustomerController {
         this.customerRepo = customerRepo;
     }
 
-    @RequestMapping("")
+    @RequestMapping
     public List<Customer> getAllCustomers() {
         log.info("All customers have been returned!");
         return customerRepo.findAll();
