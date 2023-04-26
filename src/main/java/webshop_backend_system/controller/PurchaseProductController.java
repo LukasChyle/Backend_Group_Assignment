@@ -5,11 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import webshop_backend_system.model.Purchase;
 import webshop_backend_system.model.PurchaseProduct;
-import webshop_backend_system.repository.PurchaseProductRepository;
+import webshop_backend_system.repository.PurchaseProductRepo;
 import webshop_backend_system.repository.PurchaseRepo;
 
 import java.util.List;
@@ -18,12 +16,12 @@ import java.util.List;
 @RequestMapping("/purchaseItems")
 public class PurchaseProductController {
     private static final Logger log = LoggerFactory.getLogger(PurchaseProductController.class);
-    private final PurchaseProductRepository repo;
+    private final PurchaseProductRepo repo;
 //    private final ProductRepository productRepo;
     private final PurchaseRepo purchaseRepo;
 
     public PurchaseProductController
-            (PurchaseProductRepository repo, /*ProductRepository productRepo,*/ PurchaseRepo purchaseRepo) {
+            (PurchaseProductRepo repo, /*ProductRepository productRepo,*/ PurchaseRepo purchaseRepo) {
         this.repo = repo;
 //        this.productRepo = productRepo;
         this.purchaseRepo = purchaseRepo;
