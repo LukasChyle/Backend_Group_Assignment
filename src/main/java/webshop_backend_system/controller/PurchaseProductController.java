@@ -17,7 +17,7 @@ import webshop_backend_system.repository.PurchaseRepo;
 import java.util.List;
 
 @RestController
-@RequestMapping("/purchaseItems")
+@RequestMapping("/purchaseProducts")
 public class PurchaseProductController {
     private static final Logger log = LoggerFactory.getLogger(PurchaseProductController.class);
     private final PurchaseProductRepo repo;
