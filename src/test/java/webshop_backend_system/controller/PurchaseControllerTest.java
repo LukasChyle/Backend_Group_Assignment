@@ -12,9 +12,7 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PurchaseControllerTest {
@@ -60,6 +58,49 @@ public class PurchaseControllerTest {
         assertNotNull(purchase);
         assertEquals(1, purchase.getId());
     }
+
+    @Test
+
+    public void testInvalidPurchaseById() {
+        ResponseEntity<Purchase> response = testRestTemplate.exchange(
+                "http://localhost:" + port + "/purchases/999999",
+                HttpMethod.GET,
+                null,
+                new ParameterizedTypeReference<>() {
+                });
+        Purchase purchase = response.getBody();
+        assert purchase != null;
+        assertNull(purchase.getId());
+    }
+
+    @Test
+    public void testAddPurchase() {
+        ResponseEntity<String> response = testRestTemplate.exchange(
+                "http://localhost:" + port + "/purchases/add?address=Test&zipcode=Test&locality=Test&customerId=1",
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<>() {
+                });
+
+        String message = response.getBody();
+        assertNotNull(message);
+        assertEquals("Purchase added", message);
+    }
+
+    @Test
+    public void testInvalidAddPurchase() {
+        ResponseEntity<String> response = testRestTemplate.exchange(
+                "http://localhost:" + port + "/purchases/add?address=Test&zipcode=Test&locality=Test&customerId=999999999999",
+                HttpMethod.POST,
+                null,
+                new ParameterizedTypeReference<>() {
+                });
+
+        String message = response.getBody();
+        assertNotNull(message);
+        assertEquals("Customer id not valid", message);
+    }
+
 }
 
 //06:15
