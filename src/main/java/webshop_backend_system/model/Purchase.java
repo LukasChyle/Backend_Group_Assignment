@@ -38,14 +38,23 @@ public class Purchase {
     private Customer customer;
 
 
-
     public Purchase(String address, String zipCode, String locality, Customer customer) {
         this.address = address;
         this.zipCode = zipCode;
         this.locality = locality;
         this.customer = customer;
     }
+
+    public Purchase(long id, String address, String zipCode, String locality, Customer customer) {
+        this.id = id;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.locality = locality;
+        this.customer = customer;
+    }
+
 }
+
 
 //5.15
 /*POJO -
