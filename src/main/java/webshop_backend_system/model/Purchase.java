@@ -39,11 +39,11 @@ public class Purchase {
 
 
 
-    public Purchase(String address, String zipCode, String locality/*, Customer customer*/) {
+    public Purchase(String address, String zipCode, String locality, Customer customer) {
         this.address = address;
         this.zipCode = zipCode;
         this.locality = locality;
-//        this.customer = customer;
+        this.customer = customer;
     }
 }
 
