@@ -31,12 +31,12 @@ public class PurchaseController {
         return purchaseRepo.findById(id).get();
     }
 
-//    @PostMapping("/add")
-//    public String addPurchase(@RequestBody Purchase purchase) {
-//        purchaseRepo.save(purchase);
-//        return "Purchase added " + purchase.getKund() + " Added";
-//
-//    }
+    @PostMapping("/add")
+    public String addPurchase(@RequestBody Purchase purchase) {
+        purchaseRepo.save(purchase);
+        return "Purchase added " + purchase.getCustomer() + " Added";
+
+    }
 
     @RequestMapping("/delete/{id}")
     public String deletePurchase(@PathVariable Long id) {

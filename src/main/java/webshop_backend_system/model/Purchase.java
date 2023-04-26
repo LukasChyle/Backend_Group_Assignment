@@ -1,5 +1,6 @@
 package webshop_backend_system.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -31,13 +32,12 @@ public class Purchase {
     @OneToMany(mappedBy = "purchase")
     private List<PurchaseProduct> purchaseProducts;
 
-//    @ManyToOne(optional = false)
-//    @JoinColumn
-//    @JsonIgnore
-//    private Customer customer;
+    @ManyToOne(optional = false)
+    @JoinColumn
+    @JsonIgnore
+    private Customer customer;
 
-//    @OneToMany(mappedBy = "purchase")
-//    private List<PurchaseProduct> purchaseProducts;
+
 
     public Purchase(String address, String zipCode, String locality/*, Customer customer*/) {
         this.address = address;
