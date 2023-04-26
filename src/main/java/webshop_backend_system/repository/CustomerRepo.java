@@ -1,7 +1,8 @@
-package project.repository;
+package webshop_backend_system.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import project.model.Customer;
+import webshop_backend_system.model.Customer;
+
 
 import java.util.List;
 
