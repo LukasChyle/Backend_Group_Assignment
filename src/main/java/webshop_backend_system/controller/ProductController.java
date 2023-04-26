@@ -4,8 +4,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
-import project.model.Product;
-import project.repositories.ProductRepo;
+import webshop_backend_system.model.Product;
+import webshop_backend_system.repository.ProductRepo;
 
 import java.util.List;
 
