@@ -1,6 +1,5 @@
 package webshop_backend_system.controller;
 
-import webshop_backend_system.controller.PurchaseController;
 import webshop_backend_system.model.Purchase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
