@@ -24,18 +24,18 @@ public class PurchaseProduct {
     @UpdateTimestamp
     private @Setter(AccessLevel.NONE) Instant dateUpdated;
 
-//    @ManyToOne(optional = false) @JoinColumn
-//    private Product product;
+    @ManyToOne(optional = false) @JoinColumn
+    private Product product;
 
     @ManyToOne(optional = false) @JoinColumn @JsonIgnore
     private Purchase purchase;
 
-//    public PurchaseProduct(int quantity, double price, Product product, Purchase purchase) {
-//        this.quantity = quantity;
-//        this.price = price;
-//        this.product = product;
-//        this.purchase = purchase;
-//    }
+    public PurchaseProduct(int quantity, double price, Product product, Purchase purchase) {
+        this.quantity = quantity;
+        this.price = price;
+        this.product = product;
+        this.purchase = purchase;
+    }
 
 
 }

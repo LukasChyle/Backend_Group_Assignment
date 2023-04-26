@@ -5,8 +5,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import webshop_backend_system.model.Product;
+import webshop_backend_system.model.Purchase;
 import webshop_backend_system.model.PurchaseProduct;
+import webshop_backend_system.repository.ProductRepo;
 import webshop_backend_system.repository.PurchaseProductRepo;
 import webshop_backend_system.repository.PurchaseRepo;
 
@@ -17,13 +21,13 @@ import java.util.List;
 public class PurchaseProductController {
     private static final Logger log = LoggerFactory.getLogger(PurchaseProductController.class);
     private final PurchaseProductRepo repo;
-//    private final ProductRepository productRepo;
+    private final ProductRepo productRepo;
     private final PurchaseRepo purchaseRepo;
 
     public PurchaseProductController
-            (PurchaseProductRepo repo, /*ProductRepository productRepo,*/ PurchaseRepo purchaseRepo) {
+            (PurchaseProductRepo repo, ProductRepo productRepo, PurchaseRepo purchaseRepo) {
         this.repo = repo;
-//        this.productRepo = productRepo;
+        this.productRepo = productRepo;
         this.purchaseRepo = purchaseRepo;
     }
 
@@ -38,20 +42,20 @@ public class PurchaseProductController {
                 .orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
     }
 
-//    @RequestMapping("/add")
-//    public String addPurchaseItem(@RequestParam int quantity, double price, Long productId, Long purchaseId) {
-//        if (productRepo.findById(productId).isPresent()) {
-//            if (purchaseRepo.findById(purchaseId).isPresent()) {
-//                Product product = productRepo.findById(productId).get();
-//                Purchase purchase = purchaseRepo.findById(purchaseId).get();
-//                repo.save(new PurchaseProduct(quantity, price, product, purchase));
-//                log.info("Item added to purchase");
-//                return "Item added to purchase.";
-//            }
-//            return "Purchase id not valid.";
-//        }
-//        return "Product id not valid.";
-//    }
+    @RequestMapping("/add")
+    public String addPurchaseItem(@RequestParam int quantity, double price, Long productId, Long purchaseId) {
+        if (productRepo.findById(productId).isPresent()) {
+            if (purchaseRepo.findById(purchaseId).isPresent()) {
+                Product product = productRepo.findById(productId).get();
+                Purchase purchase = purchaseRepo.findById(purchaseId).get();
+                repo.save(new PurchaseProduct(quantity, price, product, purchase));
+                log.info("Item added to purchase");
+                return "Item added to purchase.";
+            }
+            return "Purchase id not valid.";
+        }
+        return "Product id not valid.";
+    }
 
     @RequestMapping("/delete/{id}")
     public String deletePurchaseItemById(@PathVariable("id") Long id) {
