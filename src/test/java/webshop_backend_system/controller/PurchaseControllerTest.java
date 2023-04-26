@@ -1,4 +1,4 @@
-package webshop_backend_system;
+package webshop_backend_system.controller;
 
 import webshop_backend_system.controller.PurchaseController;
 import webshop_backend_system.model.Purchase;
@@ -37,7 +37,7 @@ public class PurchaseControllerTest {
     @Test
     public void testPurchase() {
         ResponseEntity<List<Purchase>> response = testRestTemplate.exchange(
-                "http://localhost:" + port + "/purchase/",
+                "http://localhost:" + port + "/purchases",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<>() {
@@ -51,7 +51,7 @@ public class PurchaseControllerTest {
     @Test
     public void testPurchaseById() {
         ResponseEntity<Purchase> response = testRestTemplate.exchange(
-                "http://localhost:" + port + "/purchase/1",
+                "http://localhost:" + port + "/purchases/1",
                 HttpMethod.GET,
                 null,
                 new ParameterizedTypeReference<>() {
