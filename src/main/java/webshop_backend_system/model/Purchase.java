@@ -43,6 +43,14 @@ public class Purchase {
         this.locality = locality;
         this.customer = customer;
     }
+
+    public Purchase(long id, String address, String zipCode, String locality, Customer customer) {
+        this.id = id;
+        this.address = address;
+        this.zipCode = zipCode;
+        this.locality = locality;
+        this.customer = customer;
+    }
 }
 
 //5.15
