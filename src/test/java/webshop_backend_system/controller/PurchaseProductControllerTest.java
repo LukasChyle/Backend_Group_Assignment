@@ -126,6 +126,6 @@ class PurchaseProductControllerTest {
 
         this.mockMvc.perform(get("/purchaseProducts/delete/5"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Product with id= 5 not found")));
+                .andExpect(content().string(equalTo("Purchased product with id= 5 not found")));
     }
 }

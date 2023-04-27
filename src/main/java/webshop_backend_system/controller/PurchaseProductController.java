@@ -65,7 +65,7 @@ public class PurchaseProductController {
             log.info("Product removed from  purchase: " + p);
             return "Product removed from  purchase: " + p;
         }
-        return "Product with id= " + id + " not found";
+        return "Purchased product with id= " + id + " not found";
     }
 
 }

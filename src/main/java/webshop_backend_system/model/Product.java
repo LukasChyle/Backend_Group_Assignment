@@ -18,7 +18,6 @@ public class Product {
     @Id
     @GeneratedValue
     private Long id;
-
     private String title;
     private String description;
     private double price;
@@ -30,6 +29,13 @@ public class Product {
     private @Setter(AccessLevel.NONE) Instant dateUpdated;
 
     public Product(String title, String description, double price, int balance) {
+        this.title = title;
+        this.description = description;
+        this.price = price;
+        this.balance = balance;
+    }
+    public Product(Long id, String title, String description, double price, int balance) {
+        this.id = id;
         this.title = title;
         this.description = description;
         this.price = price;
