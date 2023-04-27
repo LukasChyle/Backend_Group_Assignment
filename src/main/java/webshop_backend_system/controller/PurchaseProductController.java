@@ -49,8 +49,8 @@ public class PurchaseProductController {
                 Product product = productRepo.findById(productId).get();
                 Purchase purchase = purchaseRepo.findById(purchaseId).get();
                 repo.save(new PurchaseProduct(quantity, price, product, purchase));
-                log.info("Item added to purchase");
-                return "Item added to purchase.";
+                log.info("Product added to purchase");
+                return "Product added to purchase.";
             }
             return "Purchase id not valid.";
         }
@@ -62,10 +62,10 @@ public class PurchaseProductController {
         if (repo.findById(id).isPresent()) {
             PurchaseProduct p = repo.findById(id).get();
             repo.deleteById(id);
-            log.info("Item removed from  purchase: " + p);
-            return "Item removed from  purchase: " + p;
+            log.info("Product removed from  purchase: " + p);
+            return "Product removed from  purchase: " + p;
         }
-        return "Item with id= " + id + " not found";
+        return "Product with id= " + id + " not found";
     }
 
 }

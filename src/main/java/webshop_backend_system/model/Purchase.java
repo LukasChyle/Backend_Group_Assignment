@@ -37,8 +37,6 @@ public class Purchase {
     @JsonIgnore
     private Customer customer;
 
-
-
     public Purchase(String address, String zipCode, String locality, Customer customer) {
         this.address = address;
         this.zipCode = zipCode;
