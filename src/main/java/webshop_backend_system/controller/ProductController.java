@@ -44,7 +44,7 @@ public class ProductController {
         return s + p;
     }
 
-    @RequestMapping("/{id}/delete")
+    @RequestMapping("/delete/{id}")
     public String deleteProductById(@PathVariable("id") Long id) {
         if (repo.findById(id).isPresent()) {
             Product p = repo.findById(id).get();
@@ -55,7 +55,7 @@ public class ProductController {
         return "Product with id= " + id + " not found";
     }
 
-    /* ------------------------ HATEOAS ------------------------ */
+    /* ------------------------ HATEOAS basic (non-working) ------------------------ */
 
 //    @GetMapping("/hateoas/{id}")
 //    EntityModel<Product> one(@PathVariable Long id) {
@@ -74,6 +74,5 @@ public class ProductController {
 //        return CollectionModel.of(products,
 //                linkTo(methodOn(ProductController.class).all()).withSelfRel());
 //    }
-
 
 }
