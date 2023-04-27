@@ -24,14 +24,14 @@ public class Customer {
     private String phone;
     private String email;
 
-    @OneToMany(mappedBy = "customer")
-    private List<Purchase> purchases;
-
     @Column(nullable = false, updatable = false)
     @CreationTimestamp
     private @Setter(AccessLevel.NONE) Instant dateCreated ;
     @UpdateTimestamp
     private @Setter(AccessLevel.NONE) Instant dateUpdated ;
+
+    @OneToMany(mappedBy = "customer")
+    private List<Purchase> purchases;
 
     public Customer(String ssn, String firstName, String lastName, String phone, String email) {
         this.ssn = ssn;
