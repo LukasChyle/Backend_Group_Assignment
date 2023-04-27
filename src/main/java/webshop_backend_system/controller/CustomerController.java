@@ -1,5 +1,6 @@
 package webshop_backend_system.controller;
 
+import jakarta.persistence.EntityNotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -25,27 +26,25 @@ public class CustomerController {
         log.info("All customers have been returned!");
         return customerRepo.findAll();
     }
+
     @RequestMapping("/{id}")
     public Customer findById(@PathVariable long id) {
         log.info("All customers matching the chosen ID have been returned!");
-        return customerRepo.findById(id).get();
+        return customerRepo.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
     }
 
-    @RequestMapping("/{firstName}")
+    @RequestMapping("/{firstName}/firstName")
     public List<Customer> customerByFirstName(@PathVariable String firstName) {
         log.info("All customers matching the chosen firstname have been returned!");
         return customerRepo.findByFirstName(firstName);
     }
-    @RequestMapping("/{lastName}")
+
+    @RequestMapping("/{lastName}/lastName")
     public List<Customer> customerByLastName(@PathVariable String lastName) {
         log.info("All customers matching the chosen lastname have been returned!");
         return customerRepo.findByLastName(lastName);
     }
-//    @RequestMapping("/{lastName}/{firstName}")
-//    public List<Customer> customerByLastName(@PathVariable String lastName, @PathVariable String firstName) {
-//        log.info("All customers matching the chosen name have been returned!");
-//        return customerRepo.findByFullName(firstName, lastName);
-//    }
 
     @RequestMapping("/{id}/delete")
     public String deleteCustomerById(@PathVariable long id) {
@@ -58,13 +57,13 @@ public class CustomerController {
     public String addCustomer(@RequestBody Customer customer) {
         customerRepo.save(customer);
         log.info("Customer have been added");
-        return "Customer " + customer.getFirstName() + customer.getLastName() + " have been added";
+        return "Customer " + customer.getFirstName() + " " + customer.getLastName() + " have been added";
     }
     @RequestMapping("/addWithParams")
-    public String addCustomerWithParams2(@RequestParam String ssn, @RequestParam String firstName, @RequestParam String lastName,
+    public String addCustomerWithParams(@RequestParam String ssn, @RequestParam String firstName, @RequestParam String lastName,
                                        @RequestParam String phone, @RequestParam String email) {
         customerRepo.save(new Customer(ssn, firstName, lastName, phone, email));
         log.info("Customer have been added");
-        return "Customer " + firstName + lastName + " have been added";
+        return "Customer " + firstName + " " + lastName + " have been added";
     }
 }

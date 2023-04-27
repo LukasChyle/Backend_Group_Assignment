@@ -23,8 +23,6 @@ public class Customer {
     private String ssn;
     private String firstName;
     private String lastName;
-
-//    private String fullName = firstName + lastName;
     private String phone;
     private String email;
 
@@ -43,6 +41,9 @@ public class Customer {
         this.email = email;
     }
 
-
-
+    public Customer(String firstName, String lastName, String email) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+    }
 }
