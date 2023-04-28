@@ -18,6 +18,7 @@ import static org.hamcrest.Matchers.equalTo;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -40,6 +41,11 @@ public class PurchaseControllerMockMVCTest {
         when(this.mockRepo.findById(2L)).thenReturn(Optional.of(purchase2));
         when(this.mockRepo.findById(3L)).thenReturn(Optional.of(purchase3));
         when(this.mockRepo.findAll()).thenReturn(Arrays.asList(purchase1, purchase2, purchase3));
+    }
+
+    @Test
+    void shouldReturn404() throws Exception {
+        this.mockMvc.perform(get("/noneURL")).andDo(print()).andExpect(status().isNotFound());
     }
 
     @Test
