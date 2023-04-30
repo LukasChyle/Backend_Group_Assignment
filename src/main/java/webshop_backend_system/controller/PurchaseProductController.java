@@ -43,12 +43,12 @@ public class PurchaseProductController {
     }
 
     @RequestMapping("/add")
-    public String addPurchaseItem(@RequestParam int quantity, double price, Long productId, Long purchaseId) {
+    public String addPurchaseItem(@RequestParam int quantity, Long productId, Long purchaseId) {
         if (productRepo.findById(productId).isPresent()) {
             if (purchaseRepo.findById(purchaseId).isPresent()) {
                 Product product = productRepo.findById(productId).get();
                 Purchase purchase = purchaseRepo.findById(purchaseId).get();
-                repo.save(new PurchaseProduct(quantity, price, product, purchase));
+                repo.save(new PurchaseProduct(product.getTitle(), quantity, product.getPrice(), product, purchase));
                 log.info("Product added to purchase");
                 return "Product added to purchase.";
             }

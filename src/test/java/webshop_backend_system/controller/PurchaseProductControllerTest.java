@@ -56,11 +56,11 @@ class PurchaseProductControllerTest {
         Customer customer = new Customer("","","","","");
         Purchase purchase = new Purchase("","","", customer);
         PurchaseProduct p1 = new PurchaseProduct(
-                 5, 200, product, purchase);
+                 "title1", 5, 200, product, purchase);
         PurchaseProduct p2 = new PurchaseProduct(
-                 1, 99.99, product, purchase);
+                "title2", 1, 99.99, product, purchase);
         PurchaseProduct p3 = new PurchaseProduct(
-                 4, 50, product, purchase);
+                "title3", 4, 50, product, purchase);
 
         when(mockPurchaseProductRepo.findById(1L)).thenReturn(Optional.of(p1));
         when(mockPurchaseProductRepo.findById(2L)).thenReturn(Optional.of(p2));
@@ -99,15 +99,18 @@ class PurchaseProductControllerTest {
 
     @Test
     void addPurchaseItem() throws Exception {
-        this.mockMvc.perform(get("/purchaseProducts/add?quantity=1&price=199&productId=1&purchaseId=1"))
+        this.mockMvc.perform(
+                get("/purchaseProducts/add?title=title&quantity=1&price=199&productId=1&purchaseId=1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Product added to purchase.")));
 
-        this.mockMvc.perform(get("/purchaseProducts/add?quantity=1&price=199&productId=2&purchaseId=1"))
+        this.mockMvc.perform(
+                get("/purchaseProducts/add?title=title&quantity=1&price=199&productId=2&purchaseId=1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Product id not valid.")));
 
-        this.mockMvc.perform(get("/purchaseProducts/add?quantity=1&price=199&productId=1&purchaseId=2"))
+        this.mockMvc.perform(
+                get("/purchaseProducts/add?title=title&quantity=1&price=199&productId=1&purchaseId=2"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Purchase id not valid.")));
     }
@@ -117,12 +120,13 @@ class PurchaseProductControllerTest {
         this.mockMvc.perform(get("/purchaseProducts/delete/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Product removed from  purchase:" +
-                        " PurchaseProduct(id=null, quantity=5, price=200.0, dateCreated=null," +
-                        " dateUpdated=null, product=Product(id=null, title=, description=," +
-                        " price=0.0, balance=0, dateCreated=null, dateUpdated=null), purchase=Purchase(id=null," +
-                        " address=, zipCode=, locality=, dateCreated=null, dateUpdated=null, purchaseProducts=null," +
-                        " customer=Customer(id=0, ssn=, firstName=, lastName=, phone=, email=, purchases=null," +
-                        " dateCreated=null, dateUpdated=null)))")));
+                        " PurchaseProduct(id=null, title=title1, quantity=5, price=200.0," +
+                        " dateCreated=null, dateUpdated=null, product=Product(id=null," +
+                        " title=, description=, price=0.0, balance=0, dateCreated=null," +
+                        " dateUpdated=null), purchase=Purchase(id=null, address=, zipCode=," +
+                        " locality=, dateCreated=null, dateUpdated=null, purchaseProducts=null," +
+                        " customer=Customer(id=0, ssn=, firstName=, lastName=, phone=, email=," +
+                        " dateCreated=null, dateUpdated=null, purchases=null)))")));
 
         this.mockMvc.perform(get("/purchaseProducts/delete/5"))
                 .andExpect(status().isOk())

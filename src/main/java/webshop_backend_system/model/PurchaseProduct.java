@@ -15,6 +15,7 @@ import java.time.Instant;
 public class PurchaseProduct {
     @Id @GeneratedValue
     private Long id;
+    private String title;
     private int quantity;
     private double price;
 
@@ -30,7 +31,8 @@ public class PurchaseProduct {
     @ManyToOne(optional = false) @JoinColumn @JsonIgnore
     private Purchase purchase;
 
-    public PurchaseProduct(int quantity, double price, Product product, Purchase purchase) {
+    public PurchaseProduct(String title, int quantity, double price, Product product, Purchase purchase) {
+        this.title = title;
         this.quantity = quantity;
         this.price = price;
         this.product = product;

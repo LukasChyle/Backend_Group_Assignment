@@ -54,11 +54,11 @@ public class BackendGroupAssignmentApplication {
 //            purchaseRepo.save(p2);
 //            purchaseRepo.save(p3);
 //
-//            PurchaseProduct pp1 = new PurchaseProduct(1, 50, pr1, p1);
-//            PurchaseProduct pp2 = new PurchaseProduct(1, 50, pr2, p1);
-//            PurchaseProduct pp3 = new PurchaseProduct(2, 100, pr3, p1);
-//            PurchaseProduct pp4 = new PurchaseProduct(1, 50, pr2, p2);
-//            PurchaseProduct pp5 = new PurchaseProduct(1, 50, pr5, p3);
+//            PurchaseProduct pp1 = new PurchaseProduct(1, pr1, p1);
+//            PurchaseProduct pp2 = new PurchaseProduct(1, pr2, p1);
+//            PurchaseProduct pp3 = new PurchaseProduct(2, pr3, p1);
+//            PurchaseProduct pp4 = new PurchaseProduct(1, pr2, p2);
+//            PurchaseProduct pp5 = new PurchaseProduct(1, pr5, p3);
 //
 //            purchaseProductRepo.save(pp1);
 //            purchaseProductRepo.save(pp2);
