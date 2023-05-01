@@ -1,6 +1,5 @@
 package webshop_backend_system.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -8,7 +7,6 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.util.List;
 
 @Entity
 @Data
@@ -29,12 +27,8 @@ public class Purchase {
     @UpdateTimestamp
     private @Setter(AccessLevel.NONE) Instant dateUpdated;
 
-    @OneToMany(mappedBy = "purchase")
-    private List<PurchaseProduct> purchaseProducts;
-
     @ManyToOne(optional = false)
     @JoinColumn
-    @JsonIgnore
     private Customer customer;
 
     public Purchase(String address, String zipCode, String locality, Customer customer) {

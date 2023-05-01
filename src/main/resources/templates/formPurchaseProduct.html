@@ -1,10 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Form Purchased Products</title>
 </head>
-<body>
-
+<body class="showPurchaseProducts">
+<div>
+    <button><a th:href="@{/thymeleaf/products}">Products</a></button>
+    <button><a th:href="@{/thymeleaf/customers}">Customers</a></button>
+    <button><a th:href="@{/thymeleaf/purchases}">Purchases</a></button>
+    <button><a th:href="@{/thymeleaf/purchaseProducts}">Purchased Products</a></button>
+</div>
+<h2 th:text="${header}"></h2>
+<div>
+    <form action="/thymeleaf/purchaseProducts/add" method="post">
+        <input type="hidden" th:value="${purchaseProduct?.getId()}" name="id">
+        <p th:text="'Title: ' + ${purchaseProduct?.title}"></p>
+        <p th:text="'Price: ' + ${purchaseProduct?.price}"></p>
+        <label for="quantity">Quantity: </label>
+        <input type="number" min="1" id="quantity" name="quantity"
+               th:value="${purchaseProduct?.quantity}"><br><br>
+        <label for="purchaseId">Purchase ID: </label>
+        <input type="number" id="purchaseId" name="purchaseId" th:value="${purchaseProduct?.purchase?.getId()}"><br><br>
+        <label for="productId">Product ID: </label>
+        <input type="number" id="productId" name="productId" th:value="${purchaseProduct?.product?.getId()}"><br><br>
+        <p th:text="${formMessage}"></p>
+        <input type="submit" th:value="${addBut}">
+    </form>
+</div>
 </body>
 </html>

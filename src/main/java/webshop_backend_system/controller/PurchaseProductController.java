@@ -43,7 +43,7 @@ public class PurchaseProductController {
     }
 
     @RequestMapping("/add")
-    public String addPurchaseProduct(@RequestParam int quantity, Long productId, Long purchaseId) {
+    public String addPurchaseProduct(@RequestParam int quantity,@RequestParam Long productId,@RequestParam Long purchaseId) {
         if (productRepo.findById(productId).isPresent()) {
             if (purchaseRepo.findById(purchaseId).isPresent()) {
                 Product product = productRepo.findById(productId).get();

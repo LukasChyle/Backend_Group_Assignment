@@ -37,8 +37,8 @@ public class PurchaseController {
     }
 
     @PostMapping("/add")
-    public String addPurchase(@RequestParam String address, String zipcode
-            , String locality, Long customerId) {
+    public String addPurchase(@RequestParam String address,@RequestParam String zipcode
+            ,@RequestParam String locality,@RequestParam Long customerId) {
         if (customerRepo.findById(customerId).isPresent()) {
             purchaseRepo.save(new Purchase(address, zipcode, locality, customerRepo.findById(customerId).get()));
             LOGGER.info("Purchase added");

@@ -19,7 +19,6 @@ public class BackendGroupAssignmentApplication {
         SpringApplication.run(BackendGroupAssignmentApplication.class, args);
     }
 
-
 //    @Bean
 //    CommandLineRunner initData(PurchaseRepo purchaseRepo, CustomerRepo customerRepo,
 //                               ProductRepo productRepo, PurchaseProductRepo purchaseProductRepo) {
@@ -33,10 +32,10 @@ public class BackendGroupAssignmentApplication {
 //            customerRepo.save(c3);
 //
 //            Product pr1 = new Product("Chorizo", "Big spicy sausage", 50, 100);
-//            Product pr2 = new Product("Salami", "Big spicy salami", 50, 100);
-//            Product pr3 = new Product("Pepperoni", "Spicy vegetable", 50, 100);
-//            Product pr4 = new Product("Mozzarella", "Cow cheese", 50, 100);
-//            Product pr5 = new Product("Parmesan", "Cow cheese", 50, 100);
+//            Product pr2 = new Product("Salami", "Big spicy salami", 60, 100);
+//            Product pr3 = new Product("Pepperoni", "Spicy vegetable", 55, 100);
+//            Product pr4 = new Product("Mozzarella", "Cow cheese", 65, 100);
+//            Product pr5 = new Product("Parmesan", "Cow cheese", 60, 100);
 //
 //            productRepo.save(pr1);
 //            productRepo.save(pr2);
@@ -53,11 +52,11 @@ public class BackendGroupAssignmentApplication {
 //            purchaseRepo.save(p2);
 //            purchaseRepo.save(p3);
 //
-//            PurchaseProduct pp1 = new PurchaseProduct("title1", 1, 50, pr1, p1);
-//            PurchaseProduct pp2 = new PurchaseProduct("title2", 8, 60, pr2, p3);
-//            PurchaseProduct pp3 = new PurchaseProduct("title3", 2, 70, pr3, p1);
-//            PurchaseProduct pp4 = new PurchaseProduct("title4", 5, 58, pr2, p2);
-//            PurchaseProduct pp5 = new PurchaseProduct("title5", 9, 52, pr5, p3);
+//            PurchaseProduct pp1 = new PurchaseProduct("Chorizo", 25, 50, pr1, p1);
+//            PurchaseProduct pp2 = new PurchaseProduct("Salami", 23, 60, pr2, p3);
+//            PurchaseProduct pp3 = new PurchaseProduct("Pepperoni", 19, 55, pr3, p1);
+//            PurchaseProduct pp4 = new PurchaseProduct("Mozzarella", 16, 65, pr2, p2);
+//            PurchaseProduct pp5 = new PurchaseProduct("Parmesan", 9, 60, pr5, p3);
 //
 //            purchaseProductRepo.save(pp1);
 //            purchaseProductRepo.save(pp2);

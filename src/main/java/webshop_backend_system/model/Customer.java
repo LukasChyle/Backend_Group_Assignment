@@ -1,13 +1,11 @@
 package webshop_backend_system.model;
 
-
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.Instant;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -29,9 +27,6 @@ public class Customer {
     private @Setter(AccessLevel.NONE) Instant dateCreated ;
     @UpdateTimestamp
     private @Setter(AccessLevel.NONE) Instant dateUpdated ;
-
-    @OneToMany(mappedBy = "customer")
-    private List<Purchase> purchases;
 
     public Customer(String ssn, String firstName, String lastName, String phone, String email) {
         this.ssn = ssn;

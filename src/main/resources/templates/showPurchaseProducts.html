@@ -1,24 +1,36 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <title>Purchased Products</title>
 </head>
-<body>
-
-<h2 th:text="${headerPurchaseProduct}"></h2>
-<div class="showPurchaseProducts" th:unless="${#lists.isEmpty(purchaseProductsList)}">
+<body class="showPurchaseProducts">
+<div>
+    <button><a th:href="@{/thymeleaf/products}">Products</a></button>
+    <button><a th:href="@{/thymeleaf/customers}">Customers</a></button>
+    <button><a th:href="@{/thymeleaf/purchases}">Purchases</a></button>
+</div>
+<h2 th:text="${header}"></h2>
+<div th:unless="${#lists.isEmpty(list)}">
     <table>
         <tbody>
-        <tr th:each="p : ${purchaseProductsList}">
+        <tr th:each="p : ${list}">
             <td th:text="'Purchase: ' + ${p.purchase.getId()}"></td>
+            <td th:text="', Product: ' + ${p.product.getId()}"></td>
             <td th:text="', Title: ' + ${p.title}"></td>
             <td th:text="', Price: ' + ${p.price}"></td>
             <td th:text="', Quantity: ' + ${p.quantity}"></td>
-            <td><a th:href="@{/thymeleaf/purchaseProducts/delete/{id}(id=${p.id})}">Delete</a></td>
+            <td><a th:href="@{/thymeleaf/purchaseProducts/form/{id}(id=${p.id})}">Update</a></td>
+            <td><a th:href="@{'/thymeleaf/purchaseProducts/delete/' + ${p.id} + '/' + ${view}}">Delete</a></td>
         </tr>
         </tbody>
     </table>
+</div>
+<div>
+    <button><a th:href="@{/thymeleaf/product/form}">Create Product</a></button>
+    <button><a th:href="@{/thymeleaf/customer/form}">Create Customer</a></button>
+    <button><a th:href="@{/thymeleaf/purchase/form}">Create Purchase</a></button>
+    <button><a th:href="@{/thymeleaf/purchaseProducts/form}">Add Product To Purchase</a></button>
 </div>
 
 </body>
