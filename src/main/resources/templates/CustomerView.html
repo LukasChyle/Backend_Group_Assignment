@@ -1,22 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:thyme="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>CustomerView</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-<body class="CustomerView">
-<h1>All Customers</h1>
+<body>
 
-<div>
-    <table>
-        <tbody>
-        <tr thyme:each="customer : ${allCustomers}">
-            <td thyme:text="${customer.firstName}"></td>
-        </tr>
-        </tbody>
-    </table>
+
+
+<header class="navbar-header">
+    <div class="navbar">
+        <a th:href="@{/customers/form}" class="btn btn-primary">Add Customer</a>
+        <a th:href="@{/customers/viewAll}" class="btn btn-primary">Products</a>
+        <a th:href="@{/customers/viewAll}" class="btn btn-primary">Purchases</a>
+        <a th:href="@{/customers/viewAll}" class="btn btn-primary">Purchase Products</a>
+    </div>
+</header>
+<hr>
+<div class="container-fluid">
+    <div class="CustomerView" th:unless="${#lists.isEmpty(customerList)}">
+        <h2 th:text="${headerCustomer}"></h2>
+        <table>
+            <tbody>
+            <tr th:each="customerList : ${customerList}">
+                <td th:text="${customerList.firstName} + ' ' + ${customerList.lastName}"></td>
+                <td><a th:href="@{/customers/fullInfo/{id}(id=${customerList.id})}" class="btn btn-success">Open</a></td>
+                <td><a th:href="@{/customers/update/{id}(id=${customerList.id})}" class="btn btn-warning">Update</a></td>
+                <td><a th:href="@{/customers/delete/{id}(id=${customerList.id})}" class="btn btn-danger">Delete Customer</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-
 
 </body>
 </html>
