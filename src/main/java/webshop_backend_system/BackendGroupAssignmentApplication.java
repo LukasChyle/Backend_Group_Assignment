@@ -24,7 +24,6 @@ public class BackendGroupAssignmentApplication {
 //    CommandLineRunner initData(PurchaseRepo purchaseRepo, CustomerRepo customerRepo,
 //                               ProductRepo productRepo, PurchaseProductRepo purchaseProductRepo) {
 //        return (args) -> {
-//
 //            Customer c1 = new Customer("2039", "Karl", "Karlsson", "070-1234567", "Butte@kutte");
 //            Customer c2 = new Customer("2040", "Kalle", "Karlsson", "070-1234567", "Butte@kutte");
 //            Customer c3 = new Customer("2041", "Karl", "Karlsson", "070-1234567", "Butte@kutte");
@@ -54,19 +53,17 @@ public class BackendGroupAssignmentApplication {
 //            purchaseRepo.save(p2);
 //            purchaseRepo.save(p3);
 //
-//            PurchaseProduct pp1 = new PurchaseProduct(1, pr1, p1);
-//            PurchaseProduct pp2 = new PurchaseProduct(1, pr2, p1);
-//            PurchaseProduct pp3 = new PurchaseProduct(2, pr3, p1);
-//            PurchaseProduct pp4 = new PurchaseProduct(1, pr2, p2);
-//            PurchaseProduct pp5 = new PurchaseProduct(1, pr5, p3);
+//            PurchaseProduct pp1 = new PurchaseProduct("title1", 1, 50, pr1, p1);
+//            PurchaseProduct pp2 = new PurchaseProduct("title2", 8, 60, pr2, p3);
+//            PurchaseProduct pp3 = new PurchaseProduct("title3", 2, 70, pr3, p1);
+//            PurchaseProduct pp4 = new PurchaseProduct("title4", 5, 58, pr2, p2);
+//            PurchaseProduct pp5 = new PurchaseProduct("title5", 9, 52, pr5, p3);
 //
 //            purchaseProductRepo.save(pp1);
 //            purchaseProductRepo.save(pp2);
 //            purchaseProductRepo.save(pp3);
 //            purchaseProductRepo.save(pp4);
 //            purchaseProductRepo.save(pp5);
-//
-//
 //        };
 //    }
 }

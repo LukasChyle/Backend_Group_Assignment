@@ -1,10 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Purchased Products</title>
 </head>
 <body>
+
+<h2 th:text="${headerPurchaseProduct}"></h2>
+<div class="showPurchaseProducts" th:unless="${#lists.isEmpty(purchaseProductsList)}">
+    <table>
+        <tbody>
+        <tr th:each="p : ${purchaseProductsList}">
+            <td th:text="'Purchase: ' + ${p.purchase.getId()}"></td>
+            <td th:text="', Title: ' + ${p.title}"></td>
+            <td th:text="', Price: ' + ${p.price}"></td>
+            <td th:text="', Quantity: ' + ${p.quantity}"></td>
+            <td><a th:href="@{/thymeleaf/purchaseProducts/delete/{id}(id=${p.id})}">Delete</a></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 </body>
 </html>

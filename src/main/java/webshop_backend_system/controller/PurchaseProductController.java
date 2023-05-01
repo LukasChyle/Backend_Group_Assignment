@@ -32,18 +32,18 @@ public class PurchaseProductController {
     }
 
     @RequestMapping
-    public List<PurchaseProduct> getPurchaseItems() {
+    public List<PurchaseProduct> getPurchaseProducts() {
         return repo.findAll();
     }
 
     @RequestMapping("/{id}")
-    public PurchaseProduct getPurchaseItemById(@PathVariable("id") Long id) {
+    public PurchaseProduct getPurchaseItemById(@PathVariable Long id) {
         return repo.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
     }
 
     @RequestMapping("/add")
-    public String addPurchaseItem(@RequestParam int quantity, Long productId, Long purchaseId) {
+    public String addPurchaseProduct(@RequestParam int quantity, Long productId, Long purchaseId) {
         if (productRepo.findById(productId).isPresent()) {
             if (purchaseRepo.findById(purchaseId).isPresent()) {
                 Product product = productRepo.findById(productId).get();
@@ -58,7 +58,7 @@ public class PurchaseProductController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String deletePurchaseItemById(@PathVariable("id") Long id) {
+    public String deletePurchaseProductById(@PathVariable Long id) {
         if (repo.findById(id).isPresent()) {
             PurchaseProduct p = repo.findById(id).get();
             repo.deleteById(id);
@@ -67,5 +67,4 @@ public class PurchaseProductController {
         }
         return "Purchased product with id= " + id + " not found";
     }
-
 }

@@ -39,5 +39,4 @@ public class PurchaseProduct {
         this.purchase = purchase;
     }
 
-
 }
