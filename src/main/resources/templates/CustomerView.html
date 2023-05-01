@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:thyme="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CustomerView</title>
+</head>
+<body class="CustomerView">
+<h1>All Customers</h1>
+
+<div>
+    <table>
+        <tbody>
+        <tr thyme:each="customer : ${allCustomers}">
+            <td thyme:text="${customer.firstName}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>
