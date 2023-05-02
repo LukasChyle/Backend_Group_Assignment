@@ -9,43 +9,47 @@
           crossorigin="anonymous">
 </head>
 <body class="showPurchaseProducts">
-<div class="navbar">
-    <a th:href="@{/thymeleaf/products}"
-       class="btn btn-primary">Products</a>
-    <a th:href="@{/thymeleaf/customers}"
-       class="btn btn-primary">Customers</a>
-    <a th:href="@{/thymeleaf/purchaseProducts}"
-       class="btn btn-primary">Purchased Products</a>
+
+<div class="navbar-brand text-center mt-3">
+    <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
+    <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Customers</a>
+    <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary mx-2">Purchase Products</a>
 </div>
-<div class="text-left" th:unless="${#lists.isEmpty(list)}">
-    <h2 th:text="${header}"></h2>
-    <table>
+<div class="navbar-brand text-center mt-3">
+    <a th:href="@{/thymeleaf/products/form}"
+       class="btn btn-primary mx-2">Create Product</a>
+    <a th:href="@{/thymeleaf/customers/form}"
+       class="btn btn-primary mx-2">Create Customer</a>
+    <a th:href="@{/thymeleaf/purchases/form}"
+       class="btn btn-primary mx-2">Create Purchase</a>
+    <a th:href="@{/thymeleaf/purchaseProducts/form}"
+       class="btn btn-primary mx-2">Add Product To Purchase</a>
+</div>
+<h1 class="text-center mt-4" th:text="${header}"></h1>
+<div class="CustomerView mt-4" th:unless="${#lists.isEmpty(list)}">
+    <table class="table text-center">
+        <thead>
+        <th class="h3"><u>Purchase:</u></th>
+        <th class="h3"><u>Customer:</u></th>
+        <th class="h3"><u>Address:</u></th>
+        <th class="h3"><u>Zip-code:</u></th>
+        <th class="h3"><u>Locality:</u></th>
+        <th></th>
+        </thead>
         <tbody>
         <tr th:each="p : ${list}">
-            <td th:text="'Purchase: ' + ${p.getId()}"></td>
-            <td th:text="', Customer: ' + ${p.customer.getId()}"></td>
-            <td th:text="', Address: ' + ${p.address}"></td>
-            <td th:text="', Zip-Code: ' + ${p.zipCode}"></td>
-            <td th:text="', Locality: ' + ${p.locality}"></td>
-            <td><a th:href="@{/thymeleaf/purchaseProducts/{id}(id=${p.id})}"
-                   class="btn btn-success">Open</a></td>
-            <td><a th:href="@{/thymeleaf/purchases/form/{id}(id=${p.id})}"
-                   class="btn btn-warning">Update</a></td>
-            <td><a th:href="@{'/thymeleaf/purchases/delete/' + ${p.id} + '/' + ${view}}"
-                   class="btn btn-danger">Delete</a></td>
+            <th  th:text="${p.getId()}"></th>
+            <th  th:text="${p.customer.getId()}"></th>
+            <th  th:text="${p.address}"></th>
+            <th  th:text="${p.zipCode}"></th>
+            <th  th:text="${p.locality}"></th>
+            <th><a th:href="@{/thymeleaf/purchaseProducts/{id}(id=${p.id})}" class="btn btn-success">Open</a>
+                <a th:href="@{/thymeleaf/purchases/form/{id}(id=${p.id})}" class="btn btn-warning">Update</a>
+                <a th:href="@{'/thymeleaf/purchases/delete/' + ${p.id} + '/' + ${view}}" class="btn btn-danger">Delete</a></th>
         </tr>
         </tbody>
     </table>
 </div>
-<div>
-    <a th:href="@{/thymeleaf/products/form}"
-       class="btn btn-primary">Create Product</a>
-    <a th:href="@{/thymeleaf/customers/form}"
-       class="btn btn-primary">Create Customer</a>
-    <a th:href="@{/thymeleaf/purchases/form}"
-       class="btn btn-primary">Create Purchase</a>
-    <a th:href="@{/thymeleaf/purchaseProducts/form}"
-       class="btn btn-primary">Add Product To Purchase</a>
-</div>
+
 </body>
 </html>

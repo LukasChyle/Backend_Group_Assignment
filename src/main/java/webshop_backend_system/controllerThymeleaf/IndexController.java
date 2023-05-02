@@ -15,7 +15,7 @@ public class IndexController {
         model.addAttribute("purchaseProductBut", "Purchased Products");
         model.addAttribute("header", "Submission task for backend course");
         model.addAttribute("message", "\"Fake-store\" backend project " +
-                "made by: Jonathan Hellgren Dennis Fridström and Lukas Chyle");
+                "made by: Jonathan Hellgren, Dennis Fridström and Lukas Chyle");
         return "index";
     }
 }

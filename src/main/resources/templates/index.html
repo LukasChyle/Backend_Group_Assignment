@@ -9,19 +9,13 @@
           crossorigin="anonymous">
 </head>
 <body class="index">
-<div class="navbar">
-    <a th:href="@{/thymeleaf/products}"
-       class="btn btn-primary">Products</a>
-    <a th:href="@{/thymeleaf/customers}"
-       class="btn btn-primary">Customers</a>
-    <a th:href="@{/thymeleaf/purchases}"
-       class="btn btn-primary">Purchases</a>
-    <a th:href="@{/thymeleaf/purchaseProducts}"
-       class="btn btn-primary">Purchased Products</a>
+
+<div class="text-center mt-4">
+    <h1 th:text="${header}"></h1>
+    <h4 th:text="${message}"></h4>
 </div>
-<div class="text-center">
-    <h2 th:text="${header}"></h2>
-    <p th:text="${message}"></p>
+<div class="navbar-brand text-center mt-3 row justify-content-center">
+    <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary btn-lg mt-5 p-5 col-6">Start</a>
 </div>
 </body>
 </html>
