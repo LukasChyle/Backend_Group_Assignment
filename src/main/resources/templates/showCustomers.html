@@ -10,15 +10,23 @@
 
 
 <div class="navbar-brand text-center mt-3">
-    <a th:href="@{/thymeleaf/customers/form}" class="btn btn-primary mx-2">Add Customer</a>
-    <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Products</a>
-    <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Purchases</a>
+    <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
+    <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
     <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary mx-2">Purchase Products</a>
+</div>
+<div class="navbar-brand text-center mt-3">
+    <a th:href="@{/thymeleaf/products/form}"
+       class="btn btn-primary mx-2">Create Product</a>
+    <a th:href="@{/thymeleaf/customers/form}"
+       class="btn btn-primary mx-2">Create Customer</a>
+    <a th:href="@{/thymeleaf/purchases/form}"
+       class="btn btn-primary mx-2">Create Purchase</a>
+    <a th:href="@{/thymeleaf/purchaseProducts/form}"
+       class="btn btn-primary mx-2">Add Product To Purchase</a>
 </div>
 
 <div class="CustomerView mt-4" th:unless="${#lists.isEmpty(customerList)}">
     <h1 class="text-center" th:text="${headerCustomer}"></h1>
-    <hr>
     <table class="table text-center">
         <thead>
             <th class="h3"><u>Name:</u></th>
@@ -40,6 +48,8 @@
         </tbody>
     </table>
 </div>
+
+
 
 
 </body>

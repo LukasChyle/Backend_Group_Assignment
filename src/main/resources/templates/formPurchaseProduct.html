@@ -9,33 +9,51 @@
           crossorigin="anonymous">
 </head>
 <body class="showPurchaseProducts">
-<div class="navbar">
-    <a th:href="@{/thymeleaf/products}"
-       class="btn btn-primary">Products</a>
-    <a th:href="@{/thymeleaf/customers}"
-       class="btn btn-primary">Customers</a>
-    <a th:href="@{/thymeleaf/purchases}"
-       class="btn btn-primary">Purchases</a>
-    <a th:href="@{/thymeleaf/purchaseProducts}"
-       class="btn btn-primary">Purchased Products</a>
+
+<div class="navbar-brand text-center mt-3">
+    <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Customers</a>
+    <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
+    <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
+    <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary mx-2">Purchase Products</a>
 </div>
-<div class="text-left">
-    <h2 th:text="${header}"></h2>
+
+<div class="container fluid">
+    <h2  class="text-center mt-3" th:text="${header}"></h2>
     <form action="/thymeleaf/purchaseProducts/add" method="post">
-        <input type="hidden" th:value="${purchaseProduct?.getId()}" name="id">
-        <p th:text="'Title: ' + ${purchaseProduct?.title}"></p>
-        <p th:text="'Price: ' + ${purchaseProduct?.price}"></p>
-        <label for="quantity">Quantity: </label>
-        <input type="number" min="1" id="quantity" name="quantity"
-               th:value="${purchaseProduct?.quantity}"><br><br>
-        <label for="purchaseId">Purchase ID: </label>
-        <input type="number" id="purchaseId" name="purchaseId"
-               th:value="${purchaseProduct?.purchase?.getId()}"><br><br>
-        <label for="productId">Product ID: </label>
-        <input type="number" id="productId" name="productId"
-               th:value="${purchaseProduct?.product?.getId()}"><br><br>
+        <div class="form-row" >
+            <div class="mb-3">
+                <input type="hidden" th:value="${purchaseProduct?.getId()}" name="id">
+                <p  class="h4" th:text="'Title: ' + ${purchaseProduct?.title}"></p>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <p class="h4" th:text="'Price: ' + ${purchaseProduct?.price}"></p>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="quantity">Quantity: </label>
+                <input type="number" min="1" class="form-control" id="quantity" name="quantity"
+                       th:value="${purchaseProduct?.quantity}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="purchaseId">Purchase ID: </label>
+                <input type="number" class="form-control" id="purchaseId" name="purchaseId"
+                       th:value="${purchaseProduct?.purchase?.getId()}">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="productId">Product ID: </label>
+                <input type="number" class="form-control" id="productId" name="productId"
+                       th:value="${purchaseProduct?.product?.getId()}">
+            </div>
+        </div>
         <p th:text="${formMessage}"></p>
-        <input type="submit" th:value="${addBut}">
+        <input type="submit" class="btn btn-success mt-3" th:value="${addBut}">
     </form>
 </div>
 </body>
