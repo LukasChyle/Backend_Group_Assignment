@@ -42,6 +42,3 @@ public class Product {
         this.balance = balance;
     }
 }
-/*
-POJO - Product: id, title, description, price, balance, createdDate, updatedDate. 2h
- */

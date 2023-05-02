@@ -8,20 +8,21 @@
 <div>
     <button><a th:href="@{/thymeleaf/products}">Products</a></button>
     <button><a th:href="@{/thymeleaf/customers}">Customers</a></button>
-    <button><a th:href="@{/thymeleaf/purchases}">Purchases</a></button>
+    <button><a th:href="@{/thymeleaf/purchaseProducts}">Purchased Products</a></button>
 </div>
 <h2 th:text="${header}"></h2>
 <div th:unless="${#lists.isEmpty(list)}">
     <table>
         <tbody>
         <tr th:each="p : ${list}">
-            <td th:text="'Purchase: ' + ${p.purchase.getId()}"></td>
-            <td th:text="', Product: ' + ${p.product.getId()}"></td>
-            <td th:text="', Title: ' + ${p.title}"></td>
-            <td th:text="', Price: ' + ${p.price}"></td>
-            <td th:text="', Quantity: ' + ${p.quantity}"></td>
-            <td><a th:href="@{/thymeleaf/purchaseProducts/form/{id}(id=${p.id})}">Update</a></td>
-            <td><a th:href="@{'/thymeleaf/purchaseProducts/delete/' + ${p.id} + '/' + ${view}}">Delete</a></td>
+            <td th:text="'Purchase: ' + ${p.getId()}"></td>
+            <td th:text="', Customer: ' + ${p.customer.getId()}"></td>
+            <td th:text="', Address: ' + ${p.address}"></td>
+            <td th:text="', Zip-Code: ' + ${p.zipCode}"></td>
+            <td th:text="', Locality: ' + ${p.locality}"></td>
+            <td><a th:href="@{/thymeleaf/purchaseProducts/{id}(id=${p.id})}">Open</a></td>
+            <td><a th:href="@{/thymeleaf/purchases/form/{id}(id=${p.id})}">Update</a></td>
+            <td><a th:href="@{'/thymeleaf/purchases/delete/' + ${p.id} + '/' + ${view}}">Delete</a></td>
         </tr>
         </tbody>
     </table>
@@ -32,6 +33,5 @@
     <button><a th:href="@{/thymeleaf/purchases/form}">Create Purchase</a></button>
     <button><a th:href="@{/thymeleaf/purchaseProducts/form}">Add Product To Purchase</a></button>
 </div>
-
 </body>
 </html>

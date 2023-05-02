@@ -54,25 +54,4 @@ public class ProductController {
         }
         return "Product with id= " + id + " not found";
     }
-
-    /* ------------------------ HATEOAS basic (non-working) ------------------------ */
-
-//    @GetMapping("/hateoas/{id}")
-//    EntityModel<Product> one(@PathVariable Long id) {
-//        Product product = productList.stream().filter(p -> p.getId() == id ).findFirst().orElse(null);
-//        return EntityModel.of(product,
-//                linkTo(methodOn(ProductController.class).one(id)).withSelfRel(),
-//                linkTo(methodOn(ProductController.class).all()).withRel("products"));
-//    }
-//
-//    @RequestMapping("/Hproducts")
-//    CollectionModel<EntityModel<Product>> all() {
-//        List<EntityModel<Product>> products = productList.stream().map(p -> EntityModel.of(p,
-//                linkTo(methodOn(ProductController.class).one((long) p.getId())).withSelfRel(),
-//                linkTo(methodOn(ProductController.class).all()).withRel("products"))).toList();
-//
-//        return CollectionModel.of(products,
-//                linkTo(methodOn(ProductController.class).all()).withSelfRel());
-//    }
-
 }
