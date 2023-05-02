@@ -8,9 +8,9 @@
 <body>
 
 <h2>Update Customer</h2>
-<h2><a th:href="@{/customers/viewAll}" class="btn btn-primary">Back to View</a></h2>
+<h2><a th:href="@{/thymeleaf/customers/viewAll}" class="btn btn-primary">Back to View</a></h2>
 
-<form action="/customers/formUpdate" method="post">
+<form action="/thymeleaf/customers/formUpdate" method="post">
     <label for="id">Id:</label><br>
     <input type="text" id="id" name="id" th:value="${updateCustomer.id}"> <br>
     <label for="ssn">Social Security Number:</label><br>
