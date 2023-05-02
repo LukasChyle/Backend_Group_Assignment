@@ -12,5 +12,4 @@ public interface CustomerRepo extends JpaRepository<Customer, Long> {
 
     List<Customer> findByLastName(String lastName);
 
-//    List<Customer> findByFullName(String firstName, String lastName);
 }

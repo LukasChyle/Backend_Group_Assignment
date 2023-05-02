@@ -9,6 +9,7 @@ import webshop_backend_system.repository.CustomerRepo;
 
 import java.util.List;
 
+
 @Controller
 @RequestMapping("/thymeleaf/customers")
 public class CustomerViewController {
@@ -19,56 +20,40 @@ public class CustomerViewController {
         this.customerRepo = customerRepo;
     }
 
+
     @RequestMapping("/view")
-    public String customerView(){
-        return "CustomerView";
-    }
-
-    @RequestMapping("/form")
-    public String customerForm(){
-        return "CustomerForm";
-    }
-
-    @PostMapping("/formPost")
-    public String customerFormPost(@RequestParam String ssn, @RequestParam String fName,
-                                   @RequestParam String lName, @RequestParam String phone,
-                                   @RequestParam String email, Model model){
-        customerRepo.save(new Customer(ssn,fName,lName,phone,email));
-        return viewAllCustomers(model);
-    }
-    @RequestMapping("/viewAll")
     public String viewAllCustomers(Model model) {
         List<Customer> customerList = customerRepo.findAll();
         model.addAttribute("customerList", customerList);
         model.addAttribute("headerCustomer", "All Customers");
         return "CustomerView";
     }
+
+    @RequestMapping({"/form", "/form/{id}"})
+    public String getForm(@PathVariable(required = false) Long id, Model model) {
+        if (id != null && customerRepo.findById(id).isPresent()) {
+            model.addAttribute("updateCustomer", customerRepo.findById(id).get());
+            model.addAttribute("header", "Update Customer");
+            model.addAttribute("addBut", "Update Customer");
+        } else {
+            model.addAttribute("header", "Add Customer");
+            model.addAttribute("addBut", "Add Customer");
+        }
+        return "CustomerForm";
+    }
+    @PostMapping("/formPost")
+    public String customerFormPost(@RequestParam String ssn, @RequestParam String fName,
+                                   @RequestParam String lName, @RequestParam String phone,
+                                   @RequestParam String email, @RequestParam(required = false) Long id, Model model){
+
+        customerRepo.save(new Customer(id,ssn,fName,lName,phone,email));
+
+        return viewAllCustomers(model);
+    }
     @RequestMapping("/delete/{id}")
-    public String deleteCustomerById(@PathVariable long id, Model model) {
+    public String deleteCustomerById(@PathVariable Long id, Model model) {
         customerRepo.deleteById(id);
         return viewAllCustomers(model);
     }
-    @RequestMapping("/update/{id}")
-    public String updateCustomerById(@PathVariable long id, Model model) {
-        model.addAttribute("updateCustomer" , customerRepo.findById(id).get());
-        return "CustomerUpdateForm";
-    }
-    @PostMapping("/formUpdate")
-    public String updateCustomerByForm(@RequestParam long id, @RequestParam String ssn,
-                                       @RequestParam String fName, @RequestParam String lName,
-                                       @RequestParam String phone, @RequestParam String email, Model model) {
-        Customer customer = customerRepo.findById(id).get();
-        customer.setFirstName(fName);
-        customer.setLastName(lName);
-        customer.setSsn(ssn);
-        customer.setPhone(phone);
-        customer.setEmail(email);
-        return viewAllCustomers(model);
-    }
-    @RequestMapping("/fullInfo/{id}")
-    public String openFullInfo(@PathVariable long id, Model model) {
-        model.addAttribute("fullInfoCustomer" , customerRepo.findById(id).get());
-        model.addAttribute("headerFull", "Chosen Customer");
-        return "CustomerFullInfo";
-    }
+
 }

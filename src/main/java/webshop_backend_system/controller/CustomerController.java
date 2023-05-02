@@ -28,7 +28,7 @@ public class CustomerController {
     }
 
     @RequestMapping("/{id}")
-    public Customer findById(@PathVariable long id) {
+    public Customer findById(@PathVariable Long id) {
         log.info("All customers matching the chosen ID have been returned!");
         return customerRepo.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException(String.valueOf(id)));
@@ -47,7 +47,7 @@ public class CustomerController {
     }
 
     @RequestMapping("/Delete/{id}")
-    public String deleteCustomerById(@PathVariable long id) {
+    public String deleteCustomerById(@PathVariable Long id) {
         customerRepo.deleteById(id);
         log.info("Customer have been deleted by matching ID!");
         return "Customer with id " + id + " have been deleted";
