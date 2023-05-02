@@ -3,15 +3,22 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
     <title>Purchased Products</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+          crossorigin="anonymous">
 </head>
 <body class="showPurchaseProducts">
-<div>
-    <button><a th:href="@{/thymeleaf/products}">Products</a></button>
-    <button><a th:href="@{/thymeleaf/customers}">Customers</a></button>
-    <button><a th:href="@{/thymeleaf/purchaseProducts}">Purchased Products</a></button>
+<div class="navbar">
+    <a th:href="@{/thymeleaf/products}"
+       class="btn btn-primary">Products</a>
+    <a th:href="@{/thymeleaf/customers}"
+       class="btn btn-primary">Customers</a>
+    <a th:href="@{/thymeleaf/purchaseProducts}"
+       class="btn btn-primary">Purchased Products</a>
 </div>
-<h2 th:text="${header}"></h2>
-<div th:unless="${#lists.isEmpty(list)}">
+<div class="text-left" th:unless="${#lists.isEmpty(list)}">
+    <h2 th:text="${header}"></h2>
     <table>
         <tbody>
         <tr th:each="p : ${list}">
@@ -20,18 +27,25 @@
             <td th:text="', Address: ' + ${p.address}"></td>
             <td th:text="', Zip-Code: ' + ${p.zipCode}"></td>
             <td th:text="', Locality: ' + ${p.locality}"></td>
-            <td><a th:href="@{/thymeleaf/purchaseProducts/{id}(id=${p.id})}">Open</a></td>
-            <td><a th:href="@{/thymeleaf/purchases/form/{id}(id=${p.id})}">Update</a></td>
-            <td><a th:href="@{'/thymeleaf/purchases/delete/' + ${p.id} + '/' + ${view}}">Delete</a></td>
+            <td><a th:href="@{/thymeleaf/purchaseProducts/{id}(id=${p.id})}"
+                   class="btn btn-success">Open</a></td>
+            <td><a th:href="@{/thymeleaf/purchases/form/{id}(id=${p.id})}"
+                   class="btn btn-warning">Update</a></td>
+            <td><a th:href="@{'/thymeleaf/purchases/delete/' + ${p.id} + '/' + ${view}}"
+                   class="btn btn-danger">Delete</a></td>
         </tr>
         </tbody>
     </table>
 </div>
 <div>
-    <button><a th:href="@{/thymeleaf/products/form}">Create Product</a></button>
-    <button><a th:href="@{/thymeleaf/customers/form}">Create Customer</a></button>
-    <button><a th:href="@{/thymeleaf/purchases/form}">Create Purchase</a></button>
-    <button><a th:href="@{/thymeleaf/purchaseProducts/form}">Add Product To Purchase</a></button>
+    <a th:href="@{/thymeleaf/products/form}"
+       class="btn btn-primary">Create Product</a>
+    <a th:href="@{/thymeleaf/customers/form}"
+       class="btn btn-primary">Create Customer</a>
+    <a th:href="@{/thymeleaf/purchases/form}"
+       class="btn btn-primary">Create Purchase</a>
+    <a th:href="@{/thymeleaf/purchaseProducts/form}"
+       class="btn btn-primary">Add Product To Purchase</a>
 </div>
 </body>
 </html>
