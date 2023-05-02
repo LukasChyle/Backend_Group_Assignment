@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="CustomerFullInfo">
+        <h2 th:text="${headerFull}"></h2>
+        <h2><a th:href="@{/customers/viewAll}" class="btn btn-primary">Back to View</a></h2>
+
+        <ul>
+            <li th:text="'ID: ' + ${fullInfoCustomer.id}"></li>
+            <li th:text="'First Name: ' + ${fullInfoCustomer.firstName}"></li>
+            <li th:text="'Last Name: ' + ${fullInfoCustomer.lastName}"></li>
+            <li th:text="'SSN: ' + ${fullInfoCustomer.ssn}"></li>
+            <li th:text="'Phone: ' + ${fullInfoCustomer.phone}"></li>
+            <li th:text="'E-mail: ' + ${fullInfoCustomer.email}"></li>
+            <li th:text="'Date Created: ' + ${fullInfoCustomer.dateCreated}"></li>
+            <li th:text="'Date Updated: ' + ${fullInfoCustomer.dateUpdated}"></li>
+<!--            <li th:text="'Purchases: ' + ${fullInfoCustomer.purchases}"></li>-->
+<!--            <li th:text="'Full: ' + ${fullInfoCustomer}"></li>-->
+        </ul>
+    </div>
+</div>
+
+</body>
+</html>

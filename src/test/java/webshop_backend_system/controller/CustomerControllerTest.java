@@ -56,11 +56,10 @@ class CustomerControllerTest {
         when(mockRepo.findByFirstName("Ash")).thenReturn(List.of(c1));
         when(mockRepo.findByLastName("Ketchum")).thenReturn(List.of(c1));
     }
-
-//    @Test
-//    void contextLoads() {
-//        assertThat(customerController).isNotNull();
-//    }
+    @Test
+    public void testCustomerController() {
+        assert customerController != null;
+    }
 
     @Test
     void shouldReturn404() throws Exception {
