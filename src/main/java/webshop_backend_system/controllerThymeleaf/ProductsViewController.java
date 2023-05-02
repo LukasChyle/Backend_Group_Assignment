@@ -58,7 +58,11 @@ public class ProductsViewController {
 
         return getForm(id, model);
 
-
+    }
+    @RequestMapping("/delete/{id}")
+    public String deleteProductById(@PathVariable Long id, Model model) {
+        productRepo.deleteById(id);
+        return showProducts(model);
     }
 }
 
