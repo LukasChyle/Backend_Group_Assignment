@@ -10,7 +10,7 @@ import webshop_backend_system.repository.CustomerRepo;
 import java.util.List;
 
 @Controller
-@RequestMapping("/customers")
+@RequestMapping("/thymeleaf/customers")
 public class CustomerViewController {
 
     private final CustomerRepo customerRepo;

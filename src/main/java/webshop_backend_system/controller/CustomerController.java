@@ -46,7 +46,7 @@ public class CustomerController {
         return customerRepo.findByLastName(lastName);
     }
 
-    @RequestMapping("/delete/{id}}")
+    @RequestMapping("/Delete/{id}")
     public String deleteCustomerById(@PathVariable long id) {
         customerRepo.deleteById(id);
         log.info("Customer have been deleted by matching ID!");
