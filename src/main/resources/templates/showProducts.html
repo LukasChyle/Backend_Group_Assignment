@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+<header class="navbar-header">
+    <div class="navbar">
+        <a th:href="@{/thymeleaf/customers/form}" class="btn btn-primary">Add Customer</a>
+        <a th:href="@{/thymeleaf/products}" class="btn btn-primary">Products</a>
+        <a th:href="@{/thymeleaf/customers/viewAll}" class="btn btn-primary">Purchases</a>
+        <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary">Purchase Products</a>
+    </div>
+</header>
+<hr>
+<content>
+    <div class="container-fluid">
+        <div class="Products" th:unless="${#lists.isEmpty(productList)}">
+            <h2 th:text="${headerProduct}"></h2>
+            <table>
+                <tbody>
+                <tr th:each="product : ${productList}">
+                    <td th:text="${product.title}"></td>
+                    <td th:text="'|'"></td>
+                    <td th:text="'Current inventory: ' + ${product.balance}"></td>
+                    <td><a th:href="@{/thymeleaf/products/form/{id}(id=${product.id})}"
+                           class="btn btn-warning">Update</a>
+                    </td>
+                    <td><a th:href="@{/thymeleaf/products/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete
+                        Product</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div>
+        <button><a th:href="@{/thymeleaf/product/form}" class="btn btn-primary">Create Product</a></button>
+        <button><a th:href="@{/thymeleaf/customer/form}" class="btn btn-primary">Create Customer</a></button>
+        <button><a th:href="@{/thymeleaf/purchase/form}" class="btn btn-primary">Create Purchase</a></button>
+        <button><a th:href="@{/thymeleaf/purchaseProducts/form}" class="btn btn-primary">Add Product To Purchase</a></button>
+    </div>
+</content>
+</body>
+</html>
