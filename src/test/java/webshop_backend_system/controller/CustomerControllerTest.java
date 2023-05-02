@@ -100,7 +100,7 @@ class CustomerControllerTest {
 
     @Test
     void deleteCustomerById() throws Exception {
-        this.mockMvc.perform(get("/customers/1/delete"))
+        this.mockMvc.perform(get("/customers/Delete/1"))
                 .andExpect(status().isOk()).andExpect(content().string(equalTo("Customer with id 1 have been deleted")));
     }
 
