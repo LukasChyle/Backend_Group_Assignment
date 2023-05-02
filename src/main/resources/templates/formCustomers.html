@@ -8,9 +8,15 @@
 </head>
 <body>
 
+<div class="navbar-brand text-center mt-3">
+    <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Customers</a>
+    <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
+    <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
+    <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary mx-2">Purchase Products</a>
+</div>
+
 <div class="container fluid">
     <h2  class="text-center mt-3" th:text="${header}"></h2>
-    <h2><a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary">Back to View</a></h2>
     <form action="/thymeleaf/customers/formPost" method="post">
         <div class="form-row" >
             <div class="mb-3">
@@ -48,6 +54,7 @@
             <input type="text" id="email" class="form-control" name="email" th:value="${updateCustomer?.email}">
             </div>
         </div>
+        <p th:text="${formMessage}"></p>
         <input type="submit" class="btn btn-success mt-3" th:value="${addBut}">
     </form>
     </div>

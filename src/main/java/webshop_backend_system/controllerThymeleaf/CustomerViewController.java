@@ -26,7 +26,7 @@ public class CustomerViewController {
         List<Customer> customerList = customerRepo.findAll();
         model.addAttribute("customerList", customerList);
         model.addAttribute("headerCustomer", "All Customers");
-        return "CustomerView";
+        return "showCustomers";
     }
 
     @RequestMapping({"/form", "/form/{id}"})
@@ -39,16 +39,21 @@ public class CustomerViewController {
             model.addAttribute("header", "Add Customer");
             model.addAttribute("addBut", "Add Customer");
         }
-        return "CustomerForm";
+        return "formCustomers";
     }
     @PostMapping("/formPost")
     public String customerFormPost(@RequestParam String ssn, @RequestParam String fName,
                                    @RequestParam String lName, @RequestParam String phone,
                                    @RequestParam String email, @RequestParam(required = false) Long id, Model model){
+        if (id != null && customerRepo.findById(id).isPresent()) {
+            model.addAttribute("formMessage", "Updated Customer");
 
+        } else {
+            model.addAttribute("formMessage", "Created Customer");
+        }
         customerRepo.save(new Customer(id,ssn,fName,lName,phone,email));
 
-        return viewAllCustomers(model);
+        return getForm(id,model);
     }
     @RequestMapping("/delete/{id}")
     public String deleteCustomerById(@PathVariable Long id, Model model) {
