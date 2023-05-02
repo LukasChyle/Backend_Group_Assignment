@@ -38,7 +38,7 @@ public class Purchase {
         this.customer = customer;
     }
 
-    public Purchase(long id, String address, String zipCode, String locality, Customer customer) {
+    public Purchase(Long id, String address, String zipCode, String locality, Customer customer) {
         this.id = id;
         this.address = address;
         this.zipCode = zipCode;
@@ -46,16 +46,3 @@ public class Purchase {
         this.customer = customer;
     }
 }
-
-//5.15
-/*POJO -
-Purchase: id,
-address,
-zipCode,
-locality,
-createdDate,
-updatedDate,
-@ManyToOne:Customer,
-@OneToMan:List<PurchaseProduct>
-
-2h*/

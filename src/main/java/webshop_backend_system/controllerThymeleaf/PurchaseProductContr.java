@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import webshop_backend_system.controller.PurchaseProductController;
 import webshop_backend_system.model.Product;
 import webshop_backend_system.model.Purchase;
 import webshop_backend_system.model.PurchaseProduct;
@@ -21,7 +20,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/thymeleaf/purchaseProducts")
 public class PurchaseProductContr {
-    private static final Logger log = LoggerFactory.getLogger(PurchaseProductController.class);
+    private static final Logger log = LoggerFactory.getLogger(PurchaseProductContr.class);
     private final PurchaseProductRepo repo;
     private final ProductRepo productRepo;
     private final PurchaseRepo purchaseRepo;
@@ -39,7 +38,7 @@ public class PurchaseProductContr {
             Purchase purchase = purchaseRepo.findById(id).get();
             List<PurchaseProduct> list = repo.findByPurchase(purchase);
             model.addAttribute("list", list);
-            model.addAttribute("header", "Products to purchase id: " + id);
+            model.addAttribute("header", "Products to purchase " + id);
             model.addAttribute("view", id);
         } else {
             List<PurchaseProduct> list = repo.findAll();
@@ -84,7 +83,6 @@ public class PurchaseProductContr {
                 } else {
                     model.addAttribute("formMessage", "Added product to purchase");
                     log.info("Added product " + productId + " to purchase id: " + purchaseId);
-
                 }
                 Product product = productRepo.findById(productId).get();
                 Purchase purchase = purchaseRepo.findById(purchaseId).get();
