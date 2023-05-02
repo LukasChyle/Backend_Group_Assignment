@@ -38,18 +38,18 @@
         </thead>
         <tbody>
         <tr th:each="p : ${list}">
-            <th  th:text="${p.getId()}"></th>
-            <th  th:text="${p.customer.getId()}"></th>
-            <th  th:text="${p.address}"></th>
-            <th  th:text="${p.zipCode}"></th>
-            <th  th:text="${p.locality}"></th>
+            <th th:text="${p.getId()}"></th>
+            <th th:text="${p.customer.getId()}"></th>
+            <th th:text="${p.address}"></th>
+            <th th:text="${p.zipCode}"></th>
+            <th th:text="${p.locality}"></th>
             <th><a th:href="@{/thymeleaf/purchaseProducts/{id}(id=${p.id})}" class="btn btn-success">Open</a>
                 <a th:href="@{/thymeleaf/purchases/form/{id}(id=${p.id})}" class="btn btn-warning">Update</a>
-                <a th:href="@{'/thymeleaf/purchases/delete/' + ${p.id} + '/' + ${view}}" class="btn btn-danger">Delete</a></th>
+                <a th:href="@{'/thymeleaf/purchases/delete/' + ${p.id} + '/' + ${view}}"
+                   class="btn btn-danger">Delete</a></th>
         </tr>
         </tbody>
     </table>
 </div>
-
 </body>
 </html>

@@ -14,7 +14,6 @@ import java.util.List;
 @Controller
 @RequestMapping("/thymeleaf/products")
 public class ProductsViewController {
-
     private final ProductRepo productRepo;
 
     public ProductsViewController(ProductRepo productRepo) {
@@ -46,19 +45,15 @@ public class ProductsViewController {
     public String addProduct(@RequestParam(required = false) Long id, @RequestParam String title,
                              @RequestParam Double price, @RequestParam String description,
                              @RequestParam Integer balance, Model model) {
-
         if (id != null && productRepo.findById(id).isPresent()) {
             model.addAttribute("formMessage", "Updated product");
         } else {
             model.addAttribute("formMessage", "Added product");
         }
-
-
         productRepo.save(new Product(id, title, description, price, balance));
-
         return getForm(id, model);
-
     }
+
     @RequestMapping("/delete/{id}")
     public String deleteProductById(@PathVariable Long id, Model model) {
         productRepo.deleteById(id);

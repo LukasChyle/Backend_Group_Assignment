@@ -15,11 +15,10 @@
     <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
     <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary mx-2">Purchase Products</a>
 </div>
-
 <div class="container fluid">
-    <h2  class="text-center mt-3" th:text="${header}"></h2>
+    <h2 class="text-center mt-3" th:text="${header}"></h2>
     <form action="/thymeleaf/purchases/add" method="post">
-        <div class="form-row" >
+        <div class="form-row">
             <div class="mb-3">
                 <input type="hidden" th:value="${purchase?.getId()}" name="id">
                 <label for="address">Address: </label>

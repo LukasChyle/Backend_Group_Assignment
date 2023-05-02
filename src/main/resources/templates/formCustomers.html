@@ -7,57 +7,54 @@
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-
 <div class="navbar-brand text-center mt-3">
     <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Customers</a>
     <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
     <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
     <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary mx-2">Purchase Products</a>
 </div>
-
 <div class="container fluid">
-    <h2  class="text-center mt-3" th:text="${header}"></h2>
+    <h2 class="text-center mt-3" th:text="${header}"></h2>
     <form action="/thymeleaf/customers/formPost" method="post">
-        <div class="form-row" >
+        <div class="form-row">
             <div class="mb-3">
-            <label for="id" ></label>
-            <input type="hidden" class="form-control" name="id" id="id" th:value="${updateCustomer?.id}">
+                <label for="id"></label>
+                <input type="hidden" class="form-control" name="id" id="id" th:value="${updateCustomer?.id}">
             </div>
         </div>
         <div class="form-row">
             <div class="mb-3">
-            <label for="ssn">Social Security Number:</label>
-            <input type="text" class="form-control" id="ssn" name="ssn" th:value="${updateCustomer?.ssn}">
+                <label for="ssn">Social Security Number:</label>
+                <input type="text" class="form-control" id="ssn" name="ssn" th:value="${updateCustomer?.ssn}">
             </div>
         </div>
         <div class="form-row">
             <div class="mb-3">
-            <label for="fName">First Name:</label>
-            <input type="text" id="fName" class="form-control" name="fName" th:value="${updateCustomer?.firstName}">
+                <label for="fName">First Name:</label>
+                <input type="text" id="fName" class="form-control" name="fName" th:value="${updateCustomer?.firstName}">
             </div>
         </div>
         <div class="form-row">
             <div class="mb-3">
-            <label for="lName">Last Name:</label>
-            <input type="text" id="lName" class="form-control" name="lName" th:value="${updateCustomer?.lastName}">
+                <label for="lName">Last Name:</label>
+                <input type="text" id="lName" class="form-control" name="lName" th:value="${updateCustomer?.lastName}">
             </div>
         </div>
         <div class="form-row">
             <div class="mb-3">
-            <label for="phone">Phone Number:</label>
-            <input type="text" id="phone" class="form-control" name="phone" th:value="${updateCustomer?.phone}">
+                <label for="phone">Phone Number:</label>
+                <input type="text" id="phone" class="form-control" name="phone" th:value="${updateCustomer?.phone}">
             </div>
         </div>
         <div class="form-row">
             <div class="mb-3">
-            <label for="email">E-mail Address:</label>
-            <input type="text" id="email" class="form-control" name="email" th:value="${updateCustomer?.email}">
+                <label for="email">E-mail Address:</label>
+                <input type="text" id="email" class="form-control" name="email" th:value="${updateCustomer?.email}">
             </div>
         </div>
         <p th:text="${formMessage}"></p>
         <input type="submit" class="btn btn-success mt-3" th:value="${addBut}">
     </form>
-    </div>
-
+</div>
 </body>
 </html>

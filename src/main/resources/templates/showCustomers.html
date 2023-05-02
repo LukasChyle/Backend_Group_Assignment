@@ -7,8 +7,6 @@
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-
-
 <div class="navbar-brand text-center mt-3">
     <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
     <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
@@ -24,33 +22,29 @@
     <a th:href="@{/thymeleaf/purchaseProducts/form}"
        class="btn btn-primary mx-2">Add Product To Purchase</a>
 </div>
-
 <div class="CustomerView mt-4" th:unless="${#lists.isEmpty(customerList)}">
     <h1 class="text-center" th:text="${headerCustomer}"></h1>
     <table class="table text-center">
         <thead>
-            <th class="h3"><u>Name:</u></th>
-            <th class="h3"><u>SSN:</u></th>
-            <th class="h3"><u>Phone:</u></th>
-            <th class="h3"><u>E-mail:</u></th>
-            <th></th>
+        <th class="h3"><u>Name:</u></th>
+        <th class="h3"><u>SSN:</u></th>
+        <th class="h3"><u>Phone:</u></th>
+        <th class="h3"><u>E-mail:</u></th>
+        <th></th>
         </thead>
         <tbody>
         <tr th:each="customerList : ${customerList}">
-            <th  th:text="${customerList.firstName} + ' ' + ${customerList.lastName}"></th>
-            <th  th:text="${customerList.ssn}"></th>
-            <th  th:text="${customerList.phone}"></th>
-            <th  th:text="${customerList.email}"></th>
+            <th th:text="${customerList.firstName} + ' ' + ${customerList.lastName}"></th>
+            <th th:text="${customerList.ssn}"></th>
+            <th th:text="${customerList.phone}"></th>
+            <th th:text="${customerList.email}"></th>
             <th><a th:href="@{/thymeleaf/purchases/{id}(id=${customerList.id})}" class="btn btn-success">Open</a>
                 <a th:href="@{/thymeleaf/customers/form/{id}(id=${customerList.id})}" class="btn btn-warning">Update</a>
-                <a th:href="@{/thymeleaf/customers/delete/{id}(id=${customerList.id})}" class="btn btn-danger">Delete Customer</a></th>
+                <a th:href="@{/thymeleaf/customers/delete/{id}(id=${customerList.id})}" class="btn btn-danger">Delete
+                    Customer</a></th>
         </tr>
         </tbody>
     </table>
 </div>
-
-
-
-
 </body>
 </html>

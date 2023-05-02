@@ -7,45 +7,46 @@
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
 </head>
 <body>
-
-    <div class="navbar-brand text-center mt-3">
-        <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Customers</a>
-        <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
-        <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
-        <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary mx-2">Purchase Products</a>
-    </div>
-
-    <div class="container fluid">
-        <h2  class="text-center mt-3" th:text="${header}"></h2>
-        <form action="add" method="post">
-            <div class="form-row" >
-                <div class="mb-3">
-                    <input type="hidden" th:value="${product?.getId()}" name="id">
-                    <label for="title">Title: </label>
-                    <input type="text" id="title" class="form-control" name="title" th:value="${product?.getTitle()}">
-                </div>
+<div class="navbar-brand text-center mt-3">
+    <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Customers</a>
+    <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
+    <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
+    <a th:href="@{/thymeleaf/purchaseProducts}" class="btn btn-primary mx-2">Purchase Products</a>
+</div>
+<div class="container fluid">
+    <h2 class="text-center mt-3" th:text="${header}"></h2>
+    <form action="add" method="post">
+        <div class="form-row">
+            <div class="mb-3">
+                <input type="hidden" th:value="${product?.getId()}" name="id">
+                <label for="title">Title: </label>
+                <input type="text" id="title" class="form-control" name="title" th:value="${product?.getTitle()}">
             </div>
-            <div class="form-row">
-                <div class="mb-3">
-                    <label for="price">Price: </label>
-                    <input type="number" min="0.00" step="0.50" class="form-control" id="price" name="price" th:value="${product?.getPrice()}">
-                </div>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="price">Price: </label>
+                <input type="number" min="0.00" step="0.50" class="form-control" id="price" name="price"
+                       th:value="${product?.getPrice()}">
             </div>
-            <div class="form-row">
-                <div class="mb-3">
-                    <label for="description">Description: </label>
-                    <input type="text" id="description" class="form-control" name="description" th:value="${product?.getDescription()}">
-                </div>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="description">Description: </label>
+                <input type="text" id="description" class="form-control" name="description"
+                       th:value="${product?.getDescription()}">
             </div>
-            <div class="form-row">
-                <div class="mb-3">
-                    <label for="balance">Balance: </label>
-                    <input type="number" min="0" id="balance" class="form-control" name="balance" th:value="${product?.getBalance()}">
-                </div>
+        </div>
+        <div class="form-row">
+            <div class="mb-3">
+                <label for="balance">Balance: </label>
+                <input type="number" min="0" id="balance" class="form-control" name="balance"
+                       th:value="${product?.getBalance()}">
             </div>
-            <p th:text="${formMessage}"></p>
-            <input type="submit" class="btn btn-success mt-3" th:value="${addBut}">
-        </form>
-    </div>
+        </div>
+        <p th:text="${formMessage}"></p>
+        <input type="submit" class="btn btn-success mt-3" th:value="${addBut}">
+    </form>
+</div>
 </body>
 </html>

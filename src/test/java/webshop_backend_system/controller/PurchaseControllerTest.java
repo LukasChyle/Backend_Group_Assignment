@@ -100,7 +100,4 @@ public class PurchaseControllerTest {
         assertNotNull(message);
         assertEquals("Customer id not valid", message);
     }
-
 }
-
-//06:15

@@ -12,7 +12,6 @@ import java.util.List;
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-
     private static final Logger log = LoggerFactory.getLogger(ProductController.class);
     private final ProductRepo repo;
 

@@ -9,30 +9,10 @@
           crossorigin="anonymous">
 </head>
 <body class="showPurchase">
-
-<!--<div class="text-left" th:unless="${#lists.isEmpty(list)}">-->
-<!--    <h2 th:text="${header}"></h2>-->
-<!--    <table>-->
-<!--        <tbody>-->
-<!--        <tr th:each="p : ${list}">-->
-<!--            <td th:text="'Purchase: ' + ${p.purchase.getId()}"></td>-->
-<!--            <td th:text="', Product: ' + ${p.product.getId()}"></td>-->
-<!--            <td th:text="', Title: ' + ${p.title}"></td>-->
-<!--            <td th:text="', Price: ' + ${p.price}"></td>-->
-<!--            <td th:text="', Quantity: ' + ${p.quantity}"></td>-->
-<!--            <td><a th:href="@{/thymeleaf/purchaseProducts/form/{id}(id=${p.id})}"-->
-<!--                   class="btn btn-warning">Update</a></td>-->
-<!--            <td><a th:href="@{'/thymeleaf/purchaseProducts/delete/' + ${p.id} + '/' + ${view}}"-->
-<!--                   class="btn btn-danger">Delete</a></td>-->
-<!--        </tr>-->
-<!--        </tbody>-->
-<!--    </table>-->
-<!--</div>-->
-
 <div class="navbar-brand text-center mt-3">
-<a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
-<a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
-<a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Customers</a>
+    <a th:href="@{/thymeleaf/products}" class="btn btn-primary mx-2">Products</a>
+    <a th:href="@{/thymeleaf/purchases}" class="btn btn-primary mx-2">Purchases</a>
+    <a th:href="@{/thymeleaf/customers/view}" class="btn btn-primary mx-2">Customers</a>
 </div>
 <div class="navbar-brand text-center mt-3">
     <a th:href="@{/thymeleaf/products/form}"
@@ -44,10 +24,8 @@
     <a th:href="@{/thymeleaf/purchaseProducts/form}"
        class="btn btn-primary mx-2">Add Product To Purchase</a>
 </div>
-
 <h1 class="text-center mt-4" th:text="${header}"></h1>
 <div class="mt-4" th:unless="${#lists.isEmpty(list)}">
-
     <table class="table text-center">
         <thead>
         <th class="h3"><u>Purchase:</u></th>
@@ -59,17 +37,17 @@
         </thead>
         <tbody>
         <tr th:each="p : ${list}">
-            <th  th:text="${p.purchase.getId()}"></th>
-            <th  th:text="${p.product.getId()}"></th>
-            <th  th:text="${p.title}"></th>
-            <th  th:text="${p.price}"></th>
-            <th  th:text="${p.quantity}"></th>
+            <th th:text="${p.purchase.getId()}"></th>
+            <th th:text="${p.product.getId()}"></th>
+            <th th:text="${p.title}"></th>
+            <th th:text="${p.price}"></th>
+            <th th:text="${p.quantity}"></th>
             <th><a th:href="@{/thymeleaf/purchaseProducts/form/{id}(id=${p.id})}" class="btn btn-warning">Update</a>
-                <a th:href="@{'/thymeleaf/purchaseProducts/delete/' + ${p.id} + '/' + ${view}}" class="btn btn-danger">Delete</a></th>
+                <a th:href="@{'/thymeleaf/purchaseProducts/delete/' + ${p.id} + '/' + ${view}}" class="btn btn-danger">Delete</a>
+            </th>
         </tr>
         </tbody>
     </table>
 </div>
-
 </body>
 </html>

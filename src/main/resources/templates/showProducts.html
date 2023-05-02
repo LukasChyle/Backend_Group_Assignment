@@ -22,9 +22,7 @@
     <a th:href="@{/thymeleaf/purchaseProducts/form}"
        class="btn btn-primary mx-2">Add Product To Purchase</a>
 </div>
-
 <content>
-
     <div class="Products mt-4" th:unless="${#lists.isEmpty(productList)}">
         <h1 class="text-center" th:text="${headerProduct}"></h1>
         <table class="table text-center">
@@ -38,11 +36,12 @@
             <tbody>
             <tr th:each="product : ${productList}">
                 <th th:text="${product.title}"></th>
-                <th  th:text="${product.description}"></th>
-                <th  th:text="${product.price}"></th>
-                <th  th:text="${product.balance}"></th>
+                <th th:text="${product.description}"></th>
+                <th th:text="${product.price}"></th>
+                <th th:text="${product.balance}"></th>
                 <th><a th:href="@{/thymeleaf/products/form/{id}(id=${product.id})}" class="btn btn-warning">Update</a>
-                    <a th:href="@{/thymeleaf/products/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a></th>
+                    <a th:href="@{/thymeleaf/products/delete/{id}(id=${product.id})}" class="btn btn-danger">Delete</a>
+                </th>
             </tr>
             </tbody>
         </table>

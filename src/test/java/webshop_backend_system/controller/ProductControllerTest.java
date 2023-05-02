@@ -95,7 +95,7 @@ class ProductControllerTest {
     void deleteProductById() throws Exception {
         this.mockMvc.perform(get("/products/delete/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Deleted: Product(id=null, title=Tekanna," +
+                .andExpect(content().string(equalTo("Deleted: Product(id=1, title=Tekanna," +
                         " description=Kinesisk stil, price=499.0, balance=26, dateCreated=null, dateUpdated=null)")));
 
         this.mockMvc.perform(get("/products/delete/5"))

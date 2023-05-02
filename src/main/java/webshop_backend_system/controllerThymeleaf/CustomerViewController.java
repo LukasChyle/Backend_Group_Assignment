@@ -1,6 +1,5 @@
 package webshop_backend_system.controllerThymeleaf;
 
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -8,7 +7,6 @@ import webshop_backend_system.model.Customer;
 import webshop_backend_system.repository.CustomerRepo;
 
 import java.util.List;
-
 
 @Controller
 @RequestMapping("/thymeleaf/customers")
@@ -19,7 +17,6 @@ public class CustomerViewController {
     public CustomerViewController(CustomerRepo customerRepo) {
         this.customerRepo = customerRepo;
     }
-
 
     @RequestMapping("/view")
     public String viewAllCustomers(Model model) {
@@ -41,6 +38,7 @@ public class CustomerViewController {
         }
         return "formCustomers";
     }
+
     @PostMapping("/formPost")
     public String customerFormPost(@RequestParam String ssn, @RequestParam String fName,
                                    @RequestParam String lName, @RequestParam String phone,
@@ -55,10 +53,10 @@ public class CustomerViewController {
 
         return getForm(id,model);
     }
+
     @RequestMapping("/delete/{id}")
     public String deleteCustomerById(@PathVariable Long id, Model model) {
         customerRepo.deleteById(id);
         return viewAllCustomers(model);
     }
-
 }

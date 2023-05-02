@@ -62,8 +62,8 @@ public class PurchaseProductController {
         if (repo.findById(id).isPresent()) {
             PurchaseProduct p = repo.findById(id).get();
             repo.deleteById(id);
-            log.info("Product removed from  purchase: " + p);
-            return "Product removed from  purchase: " + p;
+            log.info("Product removed from purchase: " + p);
+            return "Product removed from purchase: " + p;
         }
         return "Purchased product with id= " + id + " not found";
     }

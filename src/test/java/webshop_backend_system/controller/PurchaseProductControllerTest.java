@@ -119,14 +119,12 @@ class PurchaseProductControllerTest {
     void deletePurchaseItemById() throws Exception {
         this.mockMvc.perform(get("/purchaseProducts/delete/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().string(equalTo("Product removed from  purchase:" +
-                        " PurchaseProduct(id=null, title=title1, quantity=5, price=200.0," +
-                        " dateCreated=null, dateUpdated=null, product=Product(id=null," +
-                        " title=, description=, price=0.0, balance=0, dateCreated=null," +
-                        " dateUpdated=null), purchase=Purchase(id=null, address=, zipCode=," +
-                        " locality=, dateCreated=null, dateUpdated=null, purchaseProducts=null," +
-                        " customer=Customer(id=0, ssn=, firstName=, lastName=, phone=, email=," +
-                        " dateCreated=null, dateUpdated=null, purchases=null)))")));
+                .andExpect(content().string(equalTo("Product removed from purchase: PurchaseProduct(id=null," +
+                        " title=title1, quantity=5, price=200.0, dateCreated=null, dateUpdated=null," +
+                        " product=Product(id=null, title=, description=, price=0.0, balance=0, dateCreated=null," +
+                        " dateUpdated=null), purchase=Purchase(id=null, address=, zipCode=, locality=," +
+                        " dateCreated=null, dateUpdated=null, customer=Customer(id=null, ssn=, firstName=," +
+                        " lastName=, phone=, email=, dateCreated=null, dateUpdated=null)))")));
 
         this.mockMvc.perform(get("/purchaseProducts/delete/5"))
                 .andExpect(status().isOk())
