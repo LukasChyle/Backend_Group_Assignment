@@ -12,7 +12,6 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/purchases")
 public class PurchaseController {
-
     private final PurchaseRepo purchaseRepo;
     private final CustomerRepo customerRepo;
     private static final Logger LOGGER = Logger.getLogger(PurchaseController.class.getName());
@@ -27,7 +26,6 @@ public class PurchaseController {
         LOGGER.info("getAllPurchases called");
         return purchaseRepo.findAll();
     }
-
 
     @RequestMapping("/{id}")
     public Purchase getPurchaseById(@PathVariable Long id) {
@@ -53,15 +51,4 @@ public class PurchaseController {
         purchaseRepo.deleteById(id);
         return "Purchase deleted " + id + " Deleted";
     }
-
 }
-// 05:40
-
-/*
-Controller -
-Purchase
-http://localhost:8080/purchase
-http://localhost:8080/purchase/{id}
-http://localhost:8080/purchase/add
-http://localhost:8080/purchase/delete/{id} 4h
- */

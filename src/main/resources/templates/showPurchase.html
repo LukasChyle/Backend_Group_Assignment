@@ -8,28 +8,30 @@
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
           crossorigin="anonymous">
 </head>
-<body class="showPurchase">
+<body class="showPurchaseProducts">
 <div class="navbar">
     <a th:href="@{/thymeleaf/products}"
        class="btn btn-primary">Products</a>
     <a th:href="@{/thymeleaf/customers}"
        class="btn btn-primary">Customers</a>
-    <a th:href="@{/thymeleaf/purchases}"
-       class="btn btn-primary">Purchases</a>
+    <a th:href="@{/thymeleaf/purchaseProducts}"
+       class="btn btn-primary">Purchased Products</a>
 </div>
 <div class="text-left" th:unless="${#lists.isEmpty(list)}">
     <h2 th:text="${header}"></h2>
     <table>
         <tbody>
         <tr th:each="p : ${list}">
-            <td th:text="'Purchase: ' + ${p.purchase.getId()}"></td>
-            <td th:text="', Product: ' + ${p.product.getId()}"></td>
-            <td th:text="', Title: ' + ${p.title}"></td>
-            <td th:text="', Price: ' + ${p.price}"></td>
-            <td th:text="', Quantity: ' + ${p.quantity}"></td>
-            <td><a th:href="@{/thymeleaf/purchaseProducts/form/{id}(id=${p.id})}"
+            <td th:text="'Purchase: ' + ${p.getId()}"></td>
+            <td th:text="', Customer: ' + ${p.customer.getId()}"></td>
+            <td th:text="', Address: ' + ${p.address}"></td>
+            <td th:text="', Zip-Code: ' + ${p.zipCode}"></td>
+            <td th:text="', Locality: ' + ${p.locality}"></td>
+            <td><a th:href="@{/thymeleaf/purchaseProducts/{id}(id=${p.id})}"
+                   class="btn btn-success">Open</a></td>
+            <td><a th:href="@{/thymeleaf/purchases/form/{id}(id=${p.id})}"
                    class="btn btn-warning">Update</a></td>
-            <td><a th:href="@{'/thymeleaf/purchaseProducts/delete/' + ${p.id} + '/' + ${view}}"
+            <td><a th:href="@{'/thymeleaf/purchases/delete/' + ${p.id} + '/' + ${view}}"
                    class="btn btn-danger">Delete</a></td>
         </tr>
         </tbody>
