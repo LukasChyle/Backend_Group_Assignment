@@ -27,6 +27,7 @@
         <h1 class="text-center" th:text="${headerProduct}"></h1>
         <table class="table text-center">
             <thead>
+            <th class="h3"><u>Product:</u></th>
             <th class="h3"><u>Title:</u></th>
             <th class="h3"><u>Description:</u></th>
             <th class="h3"><u>Price:</u></th>
@@ -35,6 +36,7 @@
             </thead>
             <tbody>
             <tr th:each="product : ${productList}">
+                <th th:text="${product.id}"></th>
                 <th th:text="${product.title}"></th>
                 <th th:text="${product.description}"></th>
                 <th th:text="${product.price}"></th>
