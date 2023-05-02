@@ -53,30 +53,31 @@ public class PurchaseControllerMockMVCTest {
         this.mockMvc.perform(get("/purchases"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("[{\"id\":1,\"address\":\"address1\",\"zipCode\":\"zip1\"," +
-                        "\"locality\":\"locality1\",\"dateCreated\":null,\"dateUpdated\":null,\"purchaseProducts\":null}," +
+                        "\"locality\":\"locality1\",\"dateCreated\":null,\"dateUpdated\":null,\"customer\":null}," +
                         "{\"id\":2,\"address\":\"address2\",\"zipCode\":\"zip2\",\"locality\":\"locality2\"," +
-                        "\"dateCreated\":null,\"dateUpdated\":null,\"purchaseProducts\":null}," +
+                        "\"dateCreated\":null,\"dateUpdated\":null,\"customer\":null}," +
                         "{\"id\":3,\"address\":\"address3\",\"zipCode\":\"zip3\",\"locality\":\"locality3\"," +
-                        "\"dateCreated\":null,\"dateUpdated\":null,\"purchaseProducts\":null}]"));
+                        "\"dateCreated\":null,\"dateUpdated\":null,\"customer\":null}]"));
     }
     @Test
     public void getPurchaseById() throws Exception {
         this.mockMvc.perform(get("/purchases/1"))
                 .andExpect(status().isOk())
                 .andExpect(content().json("{\"id\":1,\"address\":\"address1\",\"zipCode\":\"zip1\"," +
-                        "\"locality\":\"locality1\",\"dateCreated\":null,\"dateUpdated\":null,\"purchaseProducts\":null}"));
+                        "\"locality\":\"locality1\",\"dateCreated\":null,\"dateUpdated\":null,\"customer\":null}"));
     }
 
     @Test
     public void addPurchase() throws Exception {
-        this.mockMvc.perform(post("/purchases/add?address=address4&zipCode=zip4&locality=locality4&customerId=1"))
+        this.mockMvc.perform(post("/purchases/add?address=address4&zipcode=zip4&locality=locality4&customerId=1"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Purchase added")));
     }
 
+
     @Test
     public void addInvalidPurchase() throws Exception {
-        this.mockMvc.perform(post("/purchases/add?address=address4&zipCode=zip4&locality=locality4&customerId=11"))
+        this.mockMvc.perform(post("/purchases/add?address=address4&zipcode=zip4&locality=locality4&customerId=11"))
                 .andExpect(status().isOk())
                 .andExpect(content().string(equalTo("Customer id not valid")));
     }
