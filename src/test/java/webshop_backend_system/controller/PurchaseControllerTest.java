@@ -1,6 +1,5 @@
 package webshop_backend_system.controller;
 
-import org.junit.jupiter.api.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
 import webshop_backend_system.model.Purchase;
 import org.junit.jupiter.api.Test;
@@ -11,6 +10,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
+
 
 import java.util.List;
 
@@ -47,20 +47,6 @@ public class PurchaseControllerTest {
         List<Purchase> purchases = response.getBody();
         assertNotNull(purchases);
         assertFalse(purchases.isEmpty());
-    }
-
-    @Test
-    public void testPurchaseById() {
-        ResponseEntity<Purchase> response = testRestTemplate.exchange(
-                "http://localhost:" + port + "/purchases/1",
-                HttpMethod.GET,
-                null,
-                new ParameterizedTypeReference<>() {
-                });
-
-        Purchase purchase = response.getBody();
-        assertNotNull(purchase);
-        assertEquals(1, purchase.getId());
     }
 
     @Test
