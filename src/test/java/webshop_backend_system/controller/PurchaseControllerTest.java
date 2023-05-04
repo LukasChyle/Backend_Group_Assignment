@@ -1,5 +1,7 @@
 package webshop_backend_system.controller;
 
+import org.junit.jupiter.api.Order;
+import org.springframework.jdbc.core.JdbcTemplate;
 import webshop_backend_system.model.Purchase;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +27,8 @@ public class PurchaseControllerTest {
 
     @Autowired
     private PurchaseController purchaseController;
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Test
     public void testPurchaseController() {
@@ -74,7 +78,7 @@ public class PurchaseControllerTest {
     }
 
     @Test
-    public void testAddPurchase() {
+    public void testAddPurchase() throws InterruptedException {
         ResponseEntity<String> response = testRestTemplate.exchange(
                 "http://localhost:" + port + "/purchases/add?address=Test&zipcode=Test&locality=Test&customerId=1",
                 HttpMethod.POST,
@@ -85,6 +89,7 @@ public class PurchaseControllerTest {
         String message = response.getBody();
         assertNotNull(message);
         assertEquals("Purchase added", message);
+        cleanTestInputs();
     }
 
     @Test
@@ -99,5 +104,12 @@ public class PurchaseControllerTest {
         String message = response.getBody();
         assertNotNull(message);
         assertEquals("Customer id not valid", message);
+    }
+
+    public void cleanTestInputs() throws InterruptedException {
+        Thread.sleep(1000);
+        jdbcTemplate.update(
+                "DELETE FROM purchase WHERE address = ?",
+                "Test");
     }
 }
